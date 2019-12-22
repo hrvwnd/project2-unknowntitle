@@ -5,3 +5,5 @@ SQL_tables.txt
 /venv/
 /__pycache__/
 /application/__pycache__/
+*.docx
+/trello-progress
