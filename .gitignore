@@ -1,8 +1,6 @@
-*.pyc
-SQL_tables.txt  
+*.pyc  
 /venv
 /.vscode 
-/venv/
 /__pycache__/
 /application/__pycache__/
 *.docx
