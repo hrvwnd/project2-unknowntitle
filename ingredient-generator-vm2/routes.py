@@ -21,16 +21,28 @@ def random_list_item(csv_name):
 def random_number_generator():
     return randint(3,6)
 
+
+# -- Randomly generates whether meal will be vegetarian --
+def vegetarian():
+    random_number = randint(1,100)
+    if random_number > 20:
+        return True 
+    else:
+        return False
+
 # -- Ingredients list generator -- 
 # creates a list of ingredients to be returned in a list
 def list_of_ingredients():
     list_of_ingredients = []
     number_of_ingredients = random_number_generator()
-    vegetarian = randint(0,1)    
-    if vegetarian:
-        for i in range(number_of_ingredients + 1):
+    if vegetarian():
+        for _ in range(number_of_ingredients + 1):
             list_of_ingredients.append(random_list_item("fruit_veg.csv"))
     else: 
         list_of_ingredients.append(random_list_item("meat_fish.csv"))
-        for i in range(number_of_ingredients):
+        for _ in range(number_of_ingredients):
             list_of_ingredients.append(random_list_item("fruit_veg.csv"))
+    return list_of_ingredients
+
+#print (list_of_ingredients())
+
