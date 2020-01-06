@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <title> 
+        {{ title }} - Page
+    </title>
+</head>
+<body>
+    <div class="navbar">
+        <a href ="{{ url_for('home') }}">Home</a>
+        <a href = "{{ url_for('recipes') }}"></a>
+    </div>
+</body>
+<body>
+    <main>
+        {% block body_content %}
+        {% endblock %}
+    </main>
+</body>
