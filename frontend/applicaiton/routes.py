@@ -17,7 +17,7 @@ def random_generator():
             method = method_response.json()
 
             # CHANGE ME 
-            # Figure out how to display code 
+            # Figure out how to display ingredients
 
             return render_template("home.html", title = "home")
         else:
@@ -28,6 +28,15 @@ def random_generator():
 def recipes():
     response = requests.get("http://") # CHANGE ME 
     form = SearchForRecipe
+    if form.validate_on_submit():
+        
+        # CHANGE ME 
+        # Add display table
+        if # CHANGE ME 
+         return render_template("recipes.html", title = "recipes")
+        else:
+            return "404"
+
 
         
 
