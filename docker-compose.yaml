@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes: 
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    depends_on: 
+      - 1-frontend
+      - 4-final-recipe-generator
+
+
+  1-frontend:
+    image: 1-frontend
+    build: 
+      context: ./1-frontend
+      dockerfile: Dockerfile
+    ports:
+      - target: 5000
+        protocol: tcp
+       
+    environment:
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_HOST=${MYSQL_HOST}
+    - MYSQL_DB=${MYSQL_DB}
+    - MYSQL_DB_TEST=${MYSQL_DB_TEST}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+
+  4-final-recipe-generator:
+    image: 4-final-recipe-generator
+    build: 
+        context: ./4-final-recipe-generator
+        dockerfile: Dockerfile
+    depends_on: 
+      - 2-ingredient-generator
+      - 3-method-generator
+    
+  2-ingredient-generator:
+    image: 2-ingredient-generator
+    build:
+        context: ./2-ingredient-generator
+        dockerfile: Dockerfile
+    
+
+  3-method-generator:
+    image: 3-method-generator
+    build:
+        context: ./3-method-generator
+        dockerfile: Dockerfile
