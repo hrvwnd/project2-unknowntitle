@@ -1,4 +1,4 @@
-#import requests
+import requests
 from random import randint
 
 # testing purposes
