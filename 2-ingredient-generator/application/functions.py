@@ -35,6 +35,7 @@ def vegetarian():
 def list_of_ingredients():
     list_of_ingredients = []
     number_of_ingredients = random_number_generator()
+    fresh_list = []
     if vegetarian():
         for _ in range(number_of_ingredients + 1):
             list_of_ingredients.append(random_list_item("fruit_veg.csv"))
@@ -42,7 +43,10 @@ def list_of_ingredients():
         list_of_ingredients.append(random_list_item("meat_fish.csv"))
         for _ in range(number_of_ingredients):
             list_of_ingredients.append(random_list_item("fruit_veg.csv"))
-    return list_of_ingredients
+    for item in list_of_ingredients:
+        item = eval(item)
+        fresh_list.append(item)
+    return fresh_list
 
-#print (list_of_ingredients())
+print (list_of_ingredients())
 

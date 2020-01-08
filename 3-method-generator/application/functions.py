@@ -4,7 +4,7 @@ from random import randint
 def method_generator():
     list_of_methods = ["Fried", "Roasted", "Boiled", "Steamed", "Grilled", "Baked", "Stewed"]
     random_number = randint(0,len(list_of_methods))
-    print (random_number)
+    #print (random_number)
     method = list_of_methods[random_number]
     return method
-#print (method_generator())
+print (method_generator())
