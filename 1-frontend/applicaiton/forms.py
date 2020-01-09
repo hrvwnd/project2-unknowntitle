@@ -12,7 +12,7 @@ class RecipeNameForm(FlaskForm): # Input for user to name a recipe
     recipe_name = StringField("Recipe Name",
     validators = [
         DataRequired(),
-        Length(min= 2, max= 20)
+        Length(min= 2, max= 30)
     ]
     )
 
@@ -28,7 +28,7 @@ class SearchForRecipe(FlaskForm):
     recipe_name = StringField("Recipe Name",
     validators = [
         DataRequired()
-        Length(min = 2, max = 20)
+        Length(min = 2, max = 30)
     ]
     )
 

@@ -1,7 +1,7 @@
 #Imported functions 
 from math import ceil #needed to round decimals to the next number 
 from applicaiton import app, db
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template, url_for, flash
 from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe 
 from application.models import Recipes
 import requests
@@ -42,8 +42,10 @@ def random_generator():
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
     response = requests.get("http://") # CHANGE ME 
-    form = SearchForRecipe
+    form = SearchForRecipe()
     if form.validate_on_submit():
+        recipe_name = recipe_name.data
+        
         
         # CHANGE ME 
         # Add display table
@@ -51,6 +53,7 @@ def recipes():
          return render_template("recipes.html", title = "recipes")
         else:
             return "404"
+    return render_template("recipes.html", title = "recipes") 
 
 
         
