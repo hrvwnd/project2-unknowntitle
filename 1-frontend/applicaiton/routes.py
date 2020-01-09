@@ -38,15 +38,10 @@ def recipes():
     form = SearchForRecipe()
     if form.validate_on_submit():
         recipe_name = recipe_name.data
-        
-        
-        # CHANGE ME 
-        # Add display table
-        if # CHANGE ME 
-         return render_template("recipes.html", title = "recipes")
-        else:
-            return "404"
-    return render_template("recipes.html", title = "recipes") 
+        query = Recipes.query.filter_by(name = recipe_name).all()
+        return render_template("recipes.html", title= "recipes", form = form, \
+            results = query)
+    return render_template("recipes.html", title = "recipes", form=form) 
 
 
         

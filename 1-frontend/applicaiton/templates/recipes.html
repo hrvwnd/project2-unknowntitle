@@ -1,1 +1,33 @@
 <!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class="form">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.recipe_name.label }}
+                {% if form.recipe_name.errors %}
+                    {{ form.recipe_name }}
+                    <div class="error">
+                        {% for error in form.recipe_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.recipe_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+    <div class="results">
+        {% for item in results %}
+            <div>
+                <p>{{ item }}</p>
+            </div>    
+        {% endfor %}
+    </div>
+{% endblock body_content %}
