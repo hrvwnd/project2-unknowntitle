@@ -16,15 +16,8 @@ def random_generator():
         recipe_response = requests.get("http://4-final-recipe-generator:5000")
         if final_recipe_parts.status_code == 200:
             list_of_ingredients_and_method = final_recipe_response
-            # find out how to get the information
-
-        
-
-            # CHANGE ME 
-            # Figure out how to display ingredients
-
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
-                list_of_ingredients_and_method = list_of_ingredients_and_method, 
+                list_of_ingredients_and_method = list_of_ingredients_and_method)
         else:
             return "404- ingredients not found"
     if recipe_name_form.validate_on_submit():
