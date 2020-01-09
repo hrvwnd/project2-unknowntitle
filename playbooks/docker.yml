@@ -1,0 +1,56 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: update apt
+    apt:
+      name: "*"
+      state: latest
+      update_cache: true
+      force_apt_get: true
+  - name: install packages for apt add repo over https
+    become: true
+    apt:
+      name: "{{ packagesdep }}"
+      force_apt_get: true
+      state: latest
+      update_cache: true
+    vars:
+      packagesdep:
+      - git
+      - apt-transport-https
+      - ca-certificates
+      - wget
+      - software-properties-common
+      - gnupg2
+      - curl 
+
+  - name: Add apt singing key 
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg
+      state: present
+  - name: add docker official repo
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+      state: present  
+  - name: Index new repo into cache
+    become: yes
+    apt:
+      name: "*"
+      state: latest
+      update_cache: yes
+      force_apt_get: yes
+  - name: install docker
+    apt:
+      name: "docker-ce"
+      state: latest
+  - name: "add jenkins user to docker group"
+    user:
+     name: jenkins
+     comment: Jenkins User
+     group: docker
+     append: true
+  - name: "reload docker"
+    service:
+      name: docker
+      state: reload

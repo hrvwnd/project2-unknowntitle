@@ -1,0 +1,17 @@
+ - name: "Fix Http communication for docker-swarm with /etc/docker/daemon.json file"
+   hosts: all
+   become: true
+   tasks:
+   - name: "docker folder"
+     file:
+       path: /etc/docker
+       state: directory 
+   - name: "copy over daemon.json"
+     copy: 
+       src: ~/ansible-test/daemon.json
+       dest: /etc/docker/daemon.json
+   - name: "systemctl reload docker"
+     systemd:
+     name: docker
+     state: reloaded
+

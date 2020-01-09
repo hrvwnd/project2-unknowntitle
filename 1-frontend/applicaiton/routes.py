@@ -10,11 +10,12 @@ import requests
 def random_generator():
     GIform = GenerateIngredientsForm()
     if GIform.is_submitted():
-        ingredient_response = requests.get("http://") # CHANGE ME
-        method_response = requests.get("http://") # CHAMGE ME 
-        if ingredient_response.status_code == 200 and method_response.status_code == 200:
-            ingredients = ingredient_response.json()
-            method = method_response.json()
+        recipe_response = requests.get("http://4-final-recipe-generator:5000")
+        if final_recipe_parts.status_code == 200:
+            list_of_ingredients_and_method = final_recipe_response
+            # find out how to get the information
+
+        
 
             # CHANGE ME 
             # Figure out how to display ingredients
@@ -39,17 +40,3 @@ def recipes():
 
 
         
-
-# Calculator for number of ingredients required for the
-# number of people the recipe needs to serve
-def ingredient_quanity(number_of_people_to_serve, default_quantity_of_food):
-    # by default the number of people a meal will serve is 2
-    if number_of_people_to_serve == 2: # if people to serve is 2: return the defauly quantity
-        return default_quantity_of_food
-    # if the required amount of ingredients is a whole number return the amount 
-    elif (number_of_people_to_serve * default_quantity_of_food /2).is_integer(): 
-        return number_of_people_to_serve * default_quantity_of_food / 2
-    #if the amount of ingredients is not a whole number, round up to nearest amount 
-    else: 
-        return ceil(number_of_people_to_serve * default_quantity_of_food / 2)
-

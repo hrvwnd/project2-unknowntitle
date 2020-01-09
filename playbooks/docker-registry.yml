@@ -1,0 +1,19 @@
+ - hosts: jenkins
+   become: true
+   tasks:
+   - name: "install python pip install"
+     apt:
+       name: python-pip
+       state: latest
+       update_cache: true
+
+   - name: "docker sdk for python"
+     pip:
+       name: docker
+
+   - name: "make docker registry container"
+     docker_container:
+       name: registry
+       image: registry
+       ports:
+       - "5000:5000"

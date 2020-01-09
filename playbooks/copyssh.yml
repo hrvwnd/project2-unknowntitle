@@ -1,0 +1,49 @@
+---
+ - name: "Generate key "Generate key Pair"
+   hosts: localhost
+   connection: local
+   tasks:
+   - name: "Gen private & public key"
+     openssh-keypair:
+       path: ~/.ssh/ansible_id_rsa  
+
+ - name: "Copy private keys to servers"
+   hosts: jenkins
+   become: true
+   tasks: 
+   - name: "make jenkins user"
+     user:
+       name: jenkins
+       append: true
+       shell: /bin/bash
+   - name: "ssh folder"
+     file:
+       path: /home/jenkins/.ssh
+       state: directory
+       mode: "0700"
+       owner: jenkins
+       group: jenkins
+   - name: "Install private key"
+     copy: 
+       src: ~/.ssh/id_rsa
+       dest: /home/jenkins/.ssh/id_rsa
+       owner: jenkins
+       group: jenkins
+       mode: u=rw,g=,o=
+
+   - name: "Install public key"
+     copy:
+       src: ~/.ssh/id_rsa.pub
+       dest: /home/jenkins/.ssh/id_rsa.pub
+       owner: jenkins
+       group: jenkins
+       mode: u=rw,g=,o=
+
+
+#   - name: "Installing authorized key"
+#     authorized_key: 
+#       user: jenkins
+#       state: present
+#       key: "{{ lookup('file', '/home/jenkins.ssh/id_rsa.pub') }}"
+#       path: "/home/jenkins/.ssh/authorized_keys"
+#       manage_dir: False
