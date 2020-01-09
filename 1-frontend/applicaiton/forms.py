@@ -9,7 +9,7 @@ class GenerateIngredientsForm(FlaskForm): # Button to select random recipe ingre
     submit = SubmitField("Generate Recipe Idea")
 
 class RecipeNameForm(FlaskForm): # Input for user to name a recipe
-    recipe_name = StringField("Artist Name",
+    recipe_name = StringField("Recipe Name",
     validators = [
         DataRequired(),
         Length(min= 2, max= 20)
