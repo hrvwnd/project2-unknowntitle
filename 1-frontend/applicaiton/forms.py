@@ -2,7 +2,7 @@ from flask_wtf import FlaskFrom
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo,ValidationError
-from application.models import # CHANGE ME 
+from application.models import Recipes
 
 
 class GenerateIngredientsForm(FlaskForm): # Button to select random recipe ingredients and method 
