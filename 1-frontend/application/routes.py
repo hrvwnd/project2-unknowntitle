@@ -28,9 +28,9 @@ def home():
             # CHANGE ME
             # SAVE INGREDIENTS AND METHOD TO DATABASE
         )
-        db.session.add(new_recipe)
-        db.session.commit()
-        flash ("Recipe saved")
+        #db.session.add(new_recipe)
+        #db.session.commit()
+        flash ("Recipe saved" + str(name))
         return render_template(url_for('recipes'))
 
     return render_template("home.html", title = "home", GIform = GIform, recipe_name_form= recipe_name_form)
