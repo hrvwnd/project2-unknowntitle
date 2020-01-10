@@ -6,7 +6,9 @@ ingredients = ['Green Beans', 'Peppers', 'Potatoes', 'Avocado', 'Mushrooms']
 ingredients2 = ['Green Beans', 'Peppers', 'Bacon', 'food']
 
 
-def join_list(ingredients, method):
+def join_list(ingredients, method)
+    print (ingredients)
+    print (method)
     ingredients.append(method)
     return ingredients
 
@@ -67,6 +69,7 @@ def count_letters(list_of_ingredients_and_method):
 
 # A function that factors in how long the list of ingredients is based on the length of the combined letters in all ingredients
 def add_or_delete_parts(ingredients, method, spare_ingredients):
+    #turns strings back into lists
     list_of_ingredients_and_method = join_list(ingredients, method)
     count = count_letters(list_of_ingredients_and_method)
     if count >=40: # If over 40 characters, remvoe an ingredient at random

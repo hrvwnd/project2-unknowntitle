@@ -10,14 +10,11 @@ def final_recipe_parts():
     ingredients_service = ingredients_service.text
     spare_ingredients_service = spare_ingredients_service.text
     method_service = method_service.text    
-    #ingredients_service = ingredients_service.text.split(",")
-    #print ("TEST PRINT ")
+    print ("TEST PRINT ")
     print (spare_ingredients_service)
-    #spare_ingredients_service = spare_ingredients_service.text.split(",")
     print (ingredients_service)
-    #method_service = method_service.text.split(",")
+    print (method_service)
     post = add_or_delete_parts(ingredients_service, method_service, spare_ingredients_service)
-    #post = np.asarray(post) # converts to array for json transfer
     post = dumps(post)
     return post
 
