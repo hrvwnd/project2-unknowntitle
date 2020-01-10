@@ -8,7 +8,7 @@ import json
 def generate_recipe_ingredients():
     post = list_of_ingredients()
     #post = np.asarray(post)
-    json.dumps(post)
+    post = json.dumps(post)
     return post
 
 #print (generate_recipe_ingredients())
