@@ -14,6 +14,6 @@ def final_recipe_parts():
     print(method_service)
     post = add_or_delete_parts(ingredients_service, method_service, spare_ingredients_service)
     #post = np.asarray(post) # converts to array for json transfer
-    #json.dumps(post)
+    json.dumps(post)
     post = post.text
     return post
