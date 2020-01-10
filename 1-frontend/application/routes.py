@@ -34,7 +34,7 @@ def random_generator():
 
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
-    response = requests.get("http://") # CHANGE ME 
+    #response = requests.get("http://") # CHANGE ME 
     form = SearchForRecipe()
     if form.validate_on_submit():
         recipe_name = recipe_name.data
