@@ -5,7 +5,7 @@ import requests
 @app.route("/",methods = ["GET", "POST"])
 def method_generate():
     post = method_generator()
-    post = post.text
+    #post = post.text
     return post
 
 #print (method_generate())
