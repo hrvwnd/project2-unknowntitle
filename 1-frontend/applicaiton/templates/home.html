@@ -1,1 +1,54 @@
 <!DOCTYPE html>
+{% extends "layout.html" %}
+{% block content %}
+
+<h1><b>Welcome To the Random Recipe Generator</b></h1>
+<h2>Click the Button to generate list of between 3 and 6 ingredients
+    and a method of cooking them
+</h2>
+<div class = "form">
+    <form method="POST" action="">
+        {{ GIform.hidden_tag() }}
+        <div class="form-group">
+            {{ GIform.submit }}
+            {% if GIform.submit.errors %}
+                {{ GIform.submit }}
+                <div class="error">
+                    {% for error in GIform.submit.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ GIform.submit }}
+            {% endif %}
+
+            <p>Ingredients:</p>
+            {% for item in list_of_ingredients_and_method %}
+            <p> {{ item }}</p>
+            <br>
+            {% endfor %}
+        </div>
+    </form>
+    
+    <form method="POST" action="">
+        {{ recipe_name_formhidden_tag() }}
+        <div class="form-group">
+            {{ recipe_name_form.recipe.name.label }}
+            {% if recipe_name_form.recipe.name.errors %}
+            {{ recipe_name_form.recipe.name }}
+            <div class="error">
+                {% for error in recipe_name_form.recipe.name.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ recipe_name_form.recipe.name }}
+            {% endif %}
+            <br>
+            {{ recipe_name_form.submit}}
+        </div>
+    </form>
+</div>
+
+
+{% endblock body_content}
