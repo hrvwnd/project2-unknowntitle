@@ -23,7 +23,7 @@ def home():
             return "404- ingredients not found"
 
     if recipe_name_form.validate_on_submit():
-        #new_recipe = Recipes(
+        new_recipe = Recipes(
             name = recipe_name_form.recipe_name.data
             # CHANGE ME
             # SAVE INGREDIENTS AND METHOD TO DATABASE
