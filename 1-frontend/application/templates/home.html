@@ -31,7 +31,7 @@
     </form>
     
     <form method="POST" action="">
-        {{ recipe_name_formhidden_tag() }}
+        {{ recipe_name_form.hidden_tag() }}
         <div class="form-group">
             {{ recipe_name_form.recipe.name.label }}
             {% if recipe_name_form.recipe.name.errors %}
