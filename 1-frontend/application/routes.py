@@ -1,6 +1,6 @@
 #Imported functions 
 from math import ceil #needed to round decimals to the next number 
-from applicaiton import app, db
+from application import app, db
 from flask import Flask, request, render_template, url_for, flash
 from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe 
 from application.models import Recipes

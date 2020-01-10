@@ -1,4 +1,4 @@
-from applicaiton import app 
+from application import app 
 from application.functions import random_list_item, random_number_generator, \
     vegetarian, list_of_ingredients
 
