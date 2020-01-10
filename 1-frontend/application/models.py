@@ -1,6 +1,6 @@
 from application import db
 
-class Recipes(db.models):
+class Recipes(db.Model):
         id = db.Column(db.Integer, primary_key=True, unique = True)
         name = db.Column(db.String(30), nullable=False, unique= True)
         item1 = db.Column(db.String(15), nullable=True, unique= True)
@@ -12,12 +12,12 @@ class Recipes(db.models):
         item7 = db.Column(db.String(15), nullable=True, unique= True)
         item8 = db.Column(db.String(15), nullable=True, unique= True)
 
-class Ingredients(db.Models):
+class Ingredients(db.Model):
 
         id = db.Column(db.Integer, primary_key=True, unique = True)
         ingredient = db.Column(db.String(15), nullable=False, unique= True)
 
-class Methods(db.Models):
+class Methods(db.Model):
         
         id = db.Column(db.Integer, primary_key=True, unique = True)
         method = db.Column(db.String(15), nullable=False, unique= True)
