@@ -10,6 +10,7 @@ def final_recipe_parts():
     #ingredients_service = ingredients_service.split(",")
     print ("TEST PRINT ")
     print (ingredients_service)
+    print (ingredients_service.text)
     #spare_ingredients_service = spare_ingredients_service.split(",")
     #method_service = method_service.split(",")
     post = add_or_delete_parts(ingredients_service, method_service, spare_ingredients_service)
