@@ -13,7 +13,7 @@ def random_generator():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     if GIform.is_submitted():
-        recipe_response = requests.get("http://4-final-recipe-generator:5000")
+        recipe_response = requests.get("http://4-final-recipe-generator:5004")
         if recipe_response.status_code == 200:
             list_of_ingredients_and_method = recipe_response
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \

@@ -4,8 +4,8 @@ from application.functions import add_or_delete_parts
 
 @app.route("/",methods = ["GET", "POST"])
 def final_recipe_parts():
-    ingredients_service = requests.get("http://2-ingredient-generator:5000/")
-    spare_ingredients_service = requests.get("http://2-ingredient-generator:5000/")
-    method_service = requests.get("http://3-method-generator:5000/")
+    ingredients_service = requests.get("http://2-ingredient-generator:5002/")
+    spare_ingredients_service = requests.get("http://2-ingredient-generator:5002/")
+    method_service = requests.get("http://3-method-generator:5003/")
     post = add_or_delete_parts(ingredients_service, method_service, spare_ingredients_service)
     return post
