@@ -23,15 +23,14 @@ def home():
             return "404- ingredients not found"
 
     if recipe_name_form.validate_on_submit():
-        '''
         #new_recipe = Recipes(
             name = recipe_name_form.recipe_name.data
             # CHANGE ME
             # SAVE INGREDIENTS AND METHOD TO DATABASE
         )
-        '''
-        #db.session.add(new_recipe)
-        #db.session.commit()
+        
+        db.session.add(new_recipe)
+        db.session.commit()
         flash ("Recipe saved" + str(recipe_name_form.recipe_name.data))
         return render_template(url_for('recipes'))
 
