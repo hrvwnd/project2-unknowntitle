@@ -6,7 +6,7 @@ import numpy as np
 @app.route('/', methods=["GET", "POST"])
 def generate_recipe_ingredients():
     post = list_of_ingredients()
-    post = np.asarray(mylist)
+    post = np.asarray(post)
     return post
 
 #print (generate_recipe_ingredients())
