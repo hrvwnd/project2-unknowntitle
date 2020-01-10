@@ -33,19 +33,19 @@
     <form method="POST" action="">
         {{ recipe_name_form.hidden_tag() }}
         <div class="form-group">
-            {{ recipe_name_form.recipe.name.label }}
-            {% if recipe_name_form.recipe.name.errors %}
-            {{ recipe_name_form.recipe.name }}
+            {{ recipe_name_form.recipe_name.label }}
+            {% if recipe_name_form.recipe_name.errors %}
+            {{ recipe_name_form.recipe_name }}
             <div class="error">
-                {% for error in recipe_name_form.recipe.name.errors %}
+                {% for error in recipe_name_form.recipe_name.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
             </div>
             {% else %}
-            {{ recipe_name_form.recipe.name }}
+            {{ recipe_name_form.recipe_name }}
             {% endif %}
             <br>
-            {{ recipe_name_form.submit}}
+            {{ recipe_name_form.submit }}
         </div>
     </form>
 </div>
