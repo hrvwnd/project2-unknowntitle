@@ -12,6 +12,7 @@ Jinja2==2.10.3
 jmespath==0.9.4
 MarkupSafe==1.1.1
 more-itertools==7.2.0
+numpy==1.18.0
 packaging==19.2
 pathlib2==2.3.5
 pluggy==0.13.1
