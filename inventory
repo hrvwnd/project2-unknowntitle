@@ -1,16 +1,16 @@
 [jenkins]
-recipe-app
-recipe-app-jenkins
-
+35.246.104.33 # jenkins-swarm
+35.189.105.78 # jenkins-swarm
 [swarm-master]
-recipe-app
+35.246.86.91 # recipe-app
+35.246.44.85  # recipe-app
 
-[jenkins:vars]
+[swarm-master:vars]
 ansible_user=hrvwnd
 ansible_ssh_private_key_file=~/.ssh/google_compute_engine
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
-[swarm-master:vars]
+[jenkins:vars]
 ansible_user=hrvwnd
 ansible_ssh_private_key_file=~/.ssh/google_compute_engine
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
