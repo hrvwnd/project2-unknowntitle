@@ -11,6 +11,7 @@ def join_list(ingredients, method):
     print (method)
     print (type (ingredients))
     print (type (method))
+    ingredients = eval(str(ingredients))
     ingredients.append(method)
     return ingredients
 
