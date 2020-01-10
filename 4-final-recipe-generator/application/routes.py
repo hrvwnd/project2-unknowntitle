@@ -17,5 +17,5 @@ def final_recipe_parts():
     #post = post.text
     return post
 
-print (post())
-print (json.dumps(post))
+print (final_recipe_parts())
+print (json.dumps(final_recipe_parts))
