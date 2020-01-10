@@ -27,7 +27,7 @@ class RecipeNameForm(FlaskForm): # Input for user to name a recipe
 class SearchForRecipe(FlaskForm):
     recipe_name = StringField("Recipe Name",
     validators = [
-        DataRequired()
+        DataRequired(),
         Length(min = 2, max = 30)
     ]
     )
