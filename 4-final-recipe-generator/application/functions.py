@@ -6,7 +6,7 @@ ingredients = ['Green Beans', 'Peppers', 'Potatoes', 'Avocado', 'Mushrooms']
 ingredients2 = ['Green Beans', 'Peppers', 'Bacon', 'food']
 
 
-def join_list(ingredients, method)
+def join_list(ingredients, method):
     print (ingredients)
     print (method)
     ingredients.append(method)
