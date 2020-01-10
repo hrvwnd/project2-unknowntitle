@@ -30,7 +30,7 @@ def home():
         db.session.commit()
         flash ("Recipe saved")
         return render_template(url_for('recipes'))
-    return render_template("home.html", title = "home", GIform = GIform)
+    return render_template("home.html", title = "home", GIform = GIform, recipe_name_form= recipe_name_form)
 
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
