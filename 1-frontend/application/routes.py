@@ -13,7 +13,7 @@ def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     if GIform.is_submitted():
-        recipe_response = requests.get("http://4-final-recipe-generator:5004")
+        recipe_response = requests.get("http://4-final-recipe-generator:5004/")
         recipe_response = recipe_response.text
         print (recipe_response)
         recipe_response = eval(str(recipe_response))
