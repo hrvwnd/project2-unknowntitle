@@ -14,8 +14,8 @@ def random_generator():
     recipe_name_form = RecipeNameForm()
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5000")
-        if final_recipe_parts.status_code == 200:
-            list_of_ingredients_and_method = final_recipe_response
+        if recipe_response.status_code == 200:
+            list_of_ingredients_and_method = recipe_response
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
                 list_of_ingredients_and_method = list_of_ingredients_and_method)
         else:
