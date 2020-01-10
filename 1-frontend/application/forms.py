@@ -34,8 +34,8 @@ class SearchForRecipe(FlaskForm):
 
     submit = SubmitField("Search")
 
-        def validate_recipe_name(self,recipe_name):
-        exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())
-        if not exists:
-            raise ValidationError("This recipe does not yet exist")
+    def validate_recipe_name(self,recipe_name):
+    exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())
+    if not exists:
+        raise ValidationError("This recipe does not yet exist")
 
