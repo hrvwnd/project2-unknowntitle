@@ -9,7 +9,7 @@ import requests
 
 @app.route("/")
 @app.route("/home", methods = ["GET", "POST"])
-def random_generator():
+def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     if GIform.is_submitted():
