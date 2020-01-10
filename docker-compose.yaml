@@ -25,7 +25,7 @@ services:
     ports:
       - target: 5000
         protocol: tcp
-    image: 127.0.0.1:5000/1-frontend
+    image: 127.0.0.1:5001/1-frontend
        
     environment:
     - MYSQL_USER=${MYSQL_USER}
@@ -40,7 +40,7 @@ services:
     build: 
         context: ./4-final-recipe-generator
         dockerfile: Dockerfile
-    image: 127.0.0.1:5000/4-final-recipe-generator
+    image: 127.0.0.1:5004/4-final-recipe-generator
     depends_on: 
       - 2-ingredient-generator
       - 3-method-generator
@@ -50,7 +50,7 @@ services:
     build:
         context: ./2-ingredient-generator
         dockerfile: Dockerfile
-    image: 127.0.0.1:5000/2-ingredient-generator
+    image: 127.0.0.1:5002/2-ingredient-generator
     
 
   3-method-generator:
@@ -58,4 +58,4 @@ services:
     build:
         context: ./3-method-generator
         dockerfile: Dockerfile
-    image: 127.0.0.1:5000/3-method-generator
+    image: 127.0.0.1:5003/3-method-generator
