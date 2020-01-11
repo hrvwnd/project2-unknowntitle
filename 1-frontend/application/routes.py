@@ -12,16 +12,7 @@ import requests
 def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
-    list_of_ingredients_and_method = []
-    #HERE
-    """
-    recipe_response = requests.get("http://4-final-recipe-generator:5004/")
-    recipe_response = recipe_response.text
-    print (recipe_response)
-    recipe_response = eval(str(recipe_response))
-    list_of_ingredients_and_method = recipe_response
-    """
-    #HERE
+    list_of_ingredients_and_method = ["Press Generate button to create a potential recipe"]
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
         if recipe_response.status_code == 200:
