@@ -10,7 +10,6 @@ class Recipes(db.Model):
         item5 = db.Column(db.String(15), nullable=True, unique= False)
         item6 = db.Column(db.String(15), nullable=True, unique= False)
         item7 = db.Column(db.String(15), nullable=True, unique= False)
-        item8 = db.Column(db.String(15), nullable=True, unique= False)
 
 class Ingredients(db.Model):
 
