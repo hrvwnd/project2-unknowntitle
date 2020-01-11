@@ -14,4 +14,4 @@ def final_recipe_parts():
     post = dumps(post)
     return post
 
-#print (final_recipe_parts())
+print (final_recipe_parts())

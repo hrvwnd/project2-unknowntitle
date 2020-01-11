@@ -20,13 +20,13 @@ def home():
             recipe_response = recipe_response.text
             recipe_response = eval(str(recipe_response))
             list_of_ingredients_and_method = recipe_response
+
             if recipe_name_form.validate_on_submit():
                 print ("-----------------------------------------READ ME --------------------------")
                 print (list_of_ingredients_and_method)
 
-                if list_of_ingredients_and_method[0] == "Press Generate button to create a potential recipe" or \
-                    list_of_ingredients_and_method[0] == "You need to generate recipes first": 
-
+                if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"] \
+                    or list_of_ingredients_and_method == ["You need to generate recipes first"]: 
                     return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
                         list_of_ingredients_and_method = ["You need to generate recipes first"])
 
