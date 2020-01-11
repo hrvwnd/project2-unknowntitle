@@ -89,11 +89,10 @@ def home():
         db.session.commit()
         flash ("Recipe saved" + str(recipe_name_form.recipe_name.data))
         return redirect(url_for('recipes'))
-
+    '''
     return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
         list_of_ingredients_and_method = list_of_ingredients_and_method)
-    ''' 
-    
+
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
     form = SearchForRecipe()
