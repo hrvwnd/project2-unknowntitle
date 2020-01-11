@@ -24,21 +24,19 @@ def home():
             
         else:
             return "404- ingredients not found"
-        """
-        if request.method == "GET":
-           return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
-           list_of_ingredients_and_method = list_of_ingredients_and_method) 
-           
-        """
 
     if recipe_name_form.validate_on_submit():
         print ("-----------------------------------------READ ME --------------------------")
         print (list_of_ingredients_and_method)
-        if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"]:
+
+        if list_of_ingredients_and_method[0] == "Press Generate button to create a potential recipe" or \
+             list_of_ingredients_and_method[0] == "You need to generate recipes first": 
+
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = ["You need to generate recipes first"])
 
         while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
             list_of_ingredients_and_method.append(" ")
+
         print ("------------------------------READ ME ---------------------------------")
         print ("making sure theres 7 items in list")
         print (len(list_of_ingredients_and_method))
@@ -69,6 +67,7 @@ def recipes():
         query = Recipes.query.filter_by(name = recipe_name).all()
         return render_template("recipes.html", title= "recipes", form = form, \
             results = query)
+
     return render_template("recipes.html", title = "recipes", form=form) 
 
 
