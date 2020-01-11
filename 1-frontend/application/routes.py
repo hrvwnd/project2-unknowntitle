@@ -97,8 +97,8 @@ def home():
 def recipes():
     form = SearchForRecipe()
     if form.validate_on_submit():
-        recipe_name = recipe_name.data
-        query = Recipes.query.filter_by(name = recipe_name).all()
+        name = recipe_name.data
+        query = Recipes.query.filter_by(name = name).all()
         return render_template("recipes.html", title= "recipes", form = form, \
             results = query)
 
