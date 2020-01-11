@@ -26,13 +26,15 @@ def home():
             list_of_ingredients_and_method = recipe_response
             recipe_response = eval(str(recipe_response))
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = list_of_ingredients_and_method)
+            
+        else:
+            return "404- ingredients not found"
         """
         if request.method == "GET":
            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
            list_of_ingredients_and_method = list_of_ingredients_and_method) 
+           
         """
-        else:
-            return "404- ingredients not found"
 
     if recipe_name_form.validate_on_submit():
         new_recipe = Recipes(
