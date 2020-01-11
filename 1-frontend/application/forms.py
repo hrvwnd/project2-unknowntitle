@@ -15,7 +15,7 @@ class RecipeNameForm(FlaskForm): # Input for user to name a recipe
     ]
     )
 
-    subimit = SubmitField("Save Recipe")
+    submit = SubmitField("Save Recipe")
 
     def validate_recipe_name(self,recipe_name):
         exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())
