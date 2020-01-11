@@ -15,6 +15,7 @@ def home():
     list_of_ingredients_and_method = ["Press Generate button to create a potential recipe"]
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
+
         if recipe_response.status_code == 200:
             recipe_response = recipe_response.text
             recipe_response = eval(str(recipe_response))
@@ -31,10 +32,19 @@ def home():
         """
 
     if recipe_name_form.validate_on_submit():
+        if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"]:
+            return render_template(url_for('home'))
+        while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
+            list_of_ingredients_and_method.append("")
         new_recipe = Recipes(
             name = recipe_name_form.recipe_name.data
-            # CHANGE ME
-            # SAVE INGREDIENTS AND METHOD TO DATABASE
+            item1 = list_of_ingredients_and_method[0]
+            item2 = list_of_ingredients_and_method[1]
+            item3 = list_of_ingredients_and_method[2]
+            item4 = list_of_ingredients_and_method[3]
+            item5 = list_of_ingredients_and_method[4]
+            item6 = list_of_ingredients_and_method[5]
+            item7 = list_of_ingredients_and_method[6]
         )
         
         db.session.add(new_recipe)
