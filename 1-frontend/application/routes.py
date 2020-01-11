@@ -39,7 +39,10 @@ def home():
 
         while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
             list_of_ingredients_and_method.append(" ")
-        
+        print ("------------------------------READ ME ---------------------------------")
+        print ("making sure theres 7 items in list")
+        print (len(list_of_ingredients_and_method))
+        print (list_of_ingredients_and_method)
         new_recipe = Recipes(
             name = recipe_name_form.recipe_name.data,
             item1 = list_of_ingredients_and_method[0],
