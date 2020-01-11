@@ -10,8 +10,8 @@
     <form method="POST" action="">
         {{ GIform.hidden_tag() }}
         <div class="form-group">
-            {{ GIform.submit }}
             {% if GIform.submit.errors %}
+            {{ GIform.submit }}
                 <div class="error">
                     {% for error in GIform.submit.errors %}
                     <span>{{ error }}</span>
@@ -43,9 +43,9 @@
             {% else %}
             {{ recipe_name_form.recipe_name }}
             {% endif %}
-            <br>
         </div>
         <div class= "form-group">
+            <br>
             {{ recipe_name_form.submit }}
         </div>
     </form>
