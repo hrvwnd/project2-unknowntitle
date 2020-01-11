@@ -27,9 +27,6 @@ def remake_db():
     db.create_all()
 
     recipe_1 = Recipes(name = "Tomato Pasta", item1 = "Onions", item2 = "Carrots", item3 = "Cellary", item4 = "Tomatoes", item5 ="fried", item6 = " ", item7 = " ")
-    #creates test artists
-
-    #saves users to database
 
     db.session.add(recipe_1)
     db.session.commit()
