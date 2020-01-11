@@ -96,6 +96,7 @@ def home():
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
     form = SearchForRecipe()
+    RecipeData = Recipes.query.all()
     if form.validate_on_submit():
         name = form.recipe_name.data
         query = Recipes.query.filter_by(name = name).all()
@@ -103,7 +104,7 @@ def recipes():
         return render_template("recipes.html", title= "recipes", form = form, \
             results = query)
 
-    return render_template("recipes.html", title = "recipes", form=form) 
+    return render_template("recipes.html", title = "recipes", form=form, results = RecipeData) 
 
 
         
