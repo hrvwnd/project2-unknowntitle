@@ -32,18 +32,21 @@ def home():
         """
 
     if recipe_name_form.validate_on_submit():
+
         if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"]:
             return render_template(url_for('home'))
+
         while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
-            list_of_ingredients_and_method.append("")
+            list_of_ingredients_and_method.append(" ")
+        
         new_recipe = Recipes(
-            name = recipe_name_form.recipe_name.data
-            item1 = list_of_ingredients_and_method[0]
-            item2 = list_of_ingredients_and_method[1]
-            item3 = list_of_ingredients_and_method[2]
-            item4 = list_of_ingredients_and_method[3]
-            item5 = list_of_ingredients_and_method[4]
-            item6 = list_of_ingredients_and_method[5]
+            name = recipe_name_form.recipe_name.data,
+            item1 = list_of_ingredients_and_method[0],
+            item2 = list_of_ingredients_and_method[1],
+            item3 = list_of_ingredients_and_method[2],
+            item4 = list_of_ingredients_and_method[3],
+            item5 = list_of_ingredients_and_method[4],
+            item6 = list_of_ingredients_and_method[5],
             item7 = list_of_ingredients_and_method[6]
         )
         
