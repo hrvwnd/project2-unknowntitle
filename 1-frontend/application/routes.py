@@ -99,6 +99,7 @@ def recipes():
     if form.validate_on_submit():
         name = form.recipe_name.data
         query = Recipes.query.filter_by(name = name).all()
+        print (query)
         return render_template("recipes.html", title= "recipes", form = form, \
             results = query)
 
