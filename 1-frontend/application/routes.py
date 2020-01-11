@@ -20,7 +20,8 @@ def home():
             recipe_response = recipe_response.text
             recipe_response = eval(str(recipe_response))
             list_of_ingredients_and_method = recipe_response
-            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = list_of_ingredients_and_method)
+            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
+                list_of_ingredients_and_method = list_of_ingredients_and_method)
             
         else:
             return "404- ingredients not found"
@@ -32,7 +33,8 @@ def home():
         if list_of_ingredients_and_method[0] == "Press Generate button to create a potential recipe" or \
              list_of_ingredients_and_method[0] == "You need to generate recipes first": 
 
-            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = ["You need to generate recipes first"])
+            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
+                list_of_ingredients_and_method = ["You need to generate recipes first"])
 
         while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
             list_of_ingredients_and_method.append(" ")
