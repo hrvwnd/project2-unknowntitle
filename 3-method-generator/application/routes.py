@@ -8,4 +8,4 @@ def method_generate():
     #post = post.text
     return post
 
-print (method_generate())
+#print (method_generate())

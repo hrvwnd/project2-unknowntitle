@@ -32,9 +32,10 @@ def home():
         """
 
     if recipe_name_form.validate_on_submit():
-
+        print ("-----------------------------------------READ ME --------------------------")
+        print (list_of_ingredients_and_method)
         if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"]:
-            return render_template(url_for('home'))
+            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = ["You need to generate recipes first"])
 
         while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
             list_of_ingredients_and_method.append(" ")
@@ -49,7 +50,6 @@ def home():
             item6 = list_of_ingredients_and_method[5],
             item7 = list_of_ingredients_and_method[6]
         )
-        
         db.session.add(new_recipe)
         db.session.commit()
         flash ("Recipe saved" + str(recipe_name_form.recipe_name.data))
@@ -57,12 +57,9 @@ def home():
 
     return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
         list_of_ingredients_and_method = list_of_ingredients_and_method)
-    #return render_template("home.html", title = "home", GIform = GIform, recipe_name_form= recipe_name_form)
-
 
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
-    #response = requests.get("http://") # CHANGE ME 
     form = SearchForRecipe()
     if form.validate_on_submit():
         recipe_name = recipe_name.data

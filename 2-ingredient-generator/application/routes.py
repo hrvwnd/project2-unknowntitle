@@ -10,5 +10,5 @@ def generate_recipe_ingredients():
     #post = post.text
     return post
 
-print (generate_recipe_ingredients())
-print (dumps(generate_recipe_ingredients()))
+#print (generate_recipe_ingredients())
+#print (dumps(generate_recipe_ingredients()))

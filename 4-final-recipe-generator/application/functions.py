@@ -7,12 +7,7 @@ ingredients2 = ['Green Beans', 'Peppers', 'Bacon', 'food']
 
 
 def join_list(ingredients, method):
-    print (ingredients)
-    print (method)
-    print (type (ingredients))
-    print (type (method))
     ingredients = eval(str(ingredients))
-    print (type(ingredients))
     ingredients.append(method)
     return ingredients
 

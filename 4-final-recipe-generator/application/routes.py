@@ -10,12 +10,8 @@ def final_recipe_parts():
     ingredients_service = ingredients_service.text
     spare_ingredients_service = spare_ingredients_service.text
     method_service = method_service.text    
-    print ("TEST PRINT ")
-    print (spare_ingredients_service)
-    print (ingredients_service)
-    print (method_service)
     post = add_or_delete_parts(ingredients_service, method_service, spare_ingredients_service)
     post = dumps(post)
     return post
 
-print (final_recipe_parts())
+#print (final_recipe_parts())
