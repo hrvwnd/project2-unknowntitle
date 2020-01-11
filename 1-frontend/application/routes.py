@@ -23,8 +23,8 @@ def home():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
         if recipe_response.status_code == 200:
             recipe_response = recipe_response.text
-            list_of_ingredients_and_method = recipe_response
             recipe_response = eval(str(recipe_response))
+            list_of_ingredients_and_method = recipe_response
             return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, list_of_ingredients_and_method = list_of_ingredients_and_method)
             
         else:
