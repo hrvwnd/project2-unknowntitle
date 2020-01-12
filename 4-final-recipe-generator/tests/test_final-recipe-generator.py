@@ -10,6 +10,8 @@ class TestBase(TestCase):
         config_name = "testing"
         return app 
 
+'''
+# Cant test without faking responses
 class TestServiceRoutes(TestBase):
 
     def test_final_recipe_parts(self):
@@ -20,8 +22,13 @@ class TestServiceRoutes(TestBase):
         for i in ingredients:
             print(i)
         self.assertTrue(3 <= len(ingredients) <=8)
-    
+'''    
 
+class TestServiceFunctions(TestBase):
+    ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
+    method = "Grilled"
+    spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
 
-
+    def test_add_or_delete_parts(self, )
+        self.assert routes.add_or_delete_parts(ingredients,method,spare_ingredients)
         
