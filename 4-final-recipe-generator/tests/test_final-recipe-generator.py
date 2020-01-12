@@ -25,9 +25,10 @@ class TestServiceRoutes(TestBase):
 '''    
 
 class TestServiceFunctions(TestBase):
-    ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
-    method = "Grilled"
-    spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
-    def test_add_or_delete_parts(self,ingredients,method,spare_ingredients):
+
+    def test_add_or_delete_parts(self):
+        ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
+        method = "Grilled"
+        spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
         self.assertTrue(3 <= functions.add_or_delete_parts(ingredients,method,spare_ingredients) <=8 )
         
