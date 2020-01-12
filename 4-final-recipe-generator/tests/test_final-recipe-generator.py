@@ -61,3 +61,17 @@ class TestServiceFunctions(TestBase):
         len_added_list = len(added_list)
 
         self.assertTrue(length - len_added_list == -1) and self.assertTrue(added_list,["Beef", "Tomatoes", "Onions", "Cabbage", "test"])
+
+    def test_random_remove_replace(self):
+        list_of_ingredients_and_method = ["Beef", "Tomatoes", "Onions", "Cabbage"]
+        length = len(list_of_ingredients_and_method)
+        remove = "replace"
+        spare_ingredients = ["test"]
+        added_list = functions.random_remove(list_of_ingredients_and_method, remove, spare_ingredients)
+        len_added_list = len(added_list)
+
+        self.assertTrue(length - len_added_list == 0)
+
+    def test_count_letters(self):
+        list_of_ingredients_and_method = [1,2,3,4,5]
+        self.assertEqual(functions.count_letters(list_of_ingredients_and_method),5)
