@@ -38,8 +38,6 @@ class UnitBase(TestCase):
         # drops all created databases 
         print ("TESTING")
         db.session.remove()
-        
-
         db.drop_all()
 
 class UnitTest(UnitBase):
