@@ -18,7 +18,7 @@ class TestServiceRoutes(TestBase):
         print (ingredients)
         for i in ingredients:
             print(i)
-        self.assertTrue(3 <= len(ingredients) =<7)
+        self.assertTrue(3 <= len(ingredients) <=7)
 
 
 class TestServiceFunction(TestBase):
