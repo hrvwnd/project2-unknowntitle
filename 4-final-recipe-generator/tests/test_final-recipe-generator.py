@@ -87,3 +87,17 @@ class TestServiceFunctions(TestBase):
         method = "aaaaaa"
         spare_ingredients = ["a"]
         self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),2)
+
+
+    def test_add_or_delete_parts_20_40(self):
+        ingredients = ["aaaaaaaaaa","bbbbbb"]
+        method = "aaaaaa"
+        spare_ingredients = ["c"]
+        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),2)
+
+    def test_add_or_delete_parts_lessthan20(self):
+        ingredients = ["aaaa","bbbb"]
+        method = "cccc"
+        spare_ingredients = ["dddd"]
+        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),3) and\
+             self.assertTrue(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),["aaaa","bbbb","cccc","dddd"])
