@@ -12,6 +12,8 @@ services:
       - target: 80
         published: 80
         protocol: tcp
+    deploy:
+      replicas: 3
     depends_on: 
       - 1-frontend
       - 4-final-recipe-generator
@@ -26,37 +28,44 @@ services:
       - target: 5000
         protocol: tcp
     image: jenkins-swarm:5000/1-frontend
-       
+    deploy:
+      replicas: 3   
     environment:
     - MYSQL_USER=${MYSQL_USER}
     - MYSQL_HOST=${MYSQL_HOST}
     - MYSQL_DB=${MYSQL_DB}
     - MYSQL_DB_TEST=${MYSQL_DB_TEST}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    - SECRET_KEY=${SECRET_KEY}
 
 
   4-final-recipe-generator:
-    image: 4-final-recipe-generator
+    #image: 4-final-recipe-generator
+    image: jenkins-swarm:5000/4-final-recipe-generator
     build: 
         context: ./4-final-recipe-generator
         dockerfile: Dockerfile
-    image: jenkins-swarm:5000/4-final-recipe-generator
+    # image: jenkins-swarm:5000/4-final-recipe-generator
+    deploy:
+      replicas: 3
     depends_on: 
       - 2-ingredient-generator
       - 3-method-generator
     
   2-ingredient-generator:
-    image: 2-ingredient-generator
+    #image: 2-ingredient-generator
+    image: jenkins-swarm:5000/2-ingredient-generator
     build:
         context: ./2-ingredient-generator
         dockerfile: Dockerfile
-    image: jenkins-swarm:5000/2-ingredient-generator
-    
+    # image: jenkins-swarm:5000/2-ingredient-generator
+    deploy:
+      replicas: 3
 
   3-method-generator:
-    image: 3-method-generator
+    # image: 3-method-generator
+    image: jenkins-swarm:5000/3-method-generator
     build:
         context: ./3-method-generator
         dockerfile: Dockerfile
-    image: jenkins-swarm:5000/3-method-generator
+    deploy:
+      replicas: 3

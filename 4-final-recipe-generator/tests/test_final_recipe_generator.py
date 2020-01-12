@@ -1,11 +1,20 @@
-import unittest
+import unittest, pytest, json
 from flask import abort, url_for
 from flask_testing import TestCase
 from os import getenv
-from application import app, db, functions
+from application import app, db, functions, routes
 
-class TestBase(TeastCase):
+class TestBase(TestCase):
 
     def create_app(self):
         config_name = "testing"
         return app 
+
+class TestServiceFunction(TestBase):
+
+    def test_ingredients_generate(self):
+        pass 
+
+
+        
+        
