@@ -10,7 +10,7 @@ class TestBase(TestCase):
         config_name = "testing"
         return app 
 
-class TestServiceFunction(TestBase):
+class TestServiceRoutes(TestBase):
 
     def test_ingredients_generate(self):
         pass 

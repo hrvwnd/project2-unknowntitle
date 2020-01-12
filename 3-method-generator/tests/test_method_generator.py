@@ -10,7 +10,7 @@ class TestBase(TestCase):
         config_name = "testing"
         return app 
 
-class TestServiceFunction(TestBase):
+class TestServiceRoutes(TestBase):
 
     def test_method_generate(self):
         list_of_methods = ["Fried", "Roasted", "Boiled", "Steamed", "Grilled", "Baked", "Stewed"]
