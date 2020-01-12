@@ -15,7 +15,7 @@ class TestServiceRoutes(TestBase):
     def test_final_recipe_parts(self):
         ingredients= routes.final_recipe_parts()
 
-        lingredients = eval(ingredients)
+        ingredients = eval(ingredients)
         print (ingredients)
         for i in ingredients:
             print(i)
