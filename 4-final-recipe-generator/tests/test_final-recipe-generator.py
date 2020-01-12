@@ -75,3 +75,15 @@ class TestServiceFunctions(TestBase):
     def test_count_letters(self):
         list_of_ingredients_and_method = ["one","two","three"]
         self.assertEqual(functions.count_letters(list_of_ingredients_and_method),11)
+
+    def test_add_or_delete_parts_morethan40(self):
+        ingredients = ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","b"]
+        method = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        spare_ingredients = ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
+        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),1)
+
+    def test_add_or_delete_parts_30_40(self):
+        ingredients = ["aaaaaaaaaaaaaaaaaaaaaaaaaaa","bbbbbbbbbb"]
+        method = "aaaaaa"
+        spare_ingredients = ["a"]
+        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),2)]
