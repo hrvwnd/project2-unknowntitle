@@ -60,4 +60,4 @@ class TestServiceFunctions(TestBase):
         added_list = functions.random_remove(list_of_ingredients_and_method, remove, spare_ingredients)
         len_added_list = len(added_list)
 
-        self.assertTrue(length + len_added_list == 1) and self.assertTrue(added_list,["Beef", "Tomatoes", "Onions", "Cabbage", "test"])
+        self.assertTrue(length - len_added_list == -1) and self.assertTrue(added_list,["Beef", "Tomatoes", "Onions", "Cabbage", "test"])
