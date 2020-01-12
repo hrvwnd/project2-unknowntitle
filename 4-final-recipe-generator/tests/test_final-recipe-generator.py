@@ -23,11 +23,11 @@ class TestServiceRoutes(TestBase):
             print(i)
         self.assertTrue(3 <= len(ingredients) <=8)
 '''    
- ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
-    method = "Grilled"
-    spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
+ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
+method = "Grilled"
+spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
 
-    def test_add_or_delete_parts(ingredients,method,spare_ingredients):
+def test_add_or_delete_parts(ingredients,method,spare_ingredients):
         assert routes.add_or_delete_parts(ingredients,method,spare_ingredients)
 class TestServiceFunctions(TestBase):
     pass
