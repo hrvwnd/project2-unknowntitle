@@ -30,5 +30,5 @@ class TestServiceFunctions(TestBase):
         ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
         method = "Grilled"
         spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
-        self.assertTrue(3 <= functions.add_or_delete_parts(ingredients,method,spare_ingredients) <=8 )
+        self.assertTrue(3 <= len(functions.add_or_delete_parts(ingredients,method,spare_ingredients)) <=8 )
         
