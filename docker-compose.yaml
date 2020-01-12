@@ -33,6 +33,7 @@ services:
     - MYSQL_DB=${MYSQL_DB}
     - MYSQL_DB_TEST=${MYSQL_DB_TEST}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    - SECRET_KEY=${SECRET_KEY}
 
 
   4-final-recipe-generator:
