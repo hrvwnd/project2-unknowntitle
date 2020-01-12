@@ -35,19 +35,19 @@ class TestServiceFunctions(TestBase):
     def test_join_list(self):
         ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage"]
         method = "test"
-        self.assertEqual(ingredients = ["Beef", "Tomatoes", "Onions", "Cabbage", "test"])
+        self.assertEqual(ingredients, ["Beef", "Tomatoes", "Onions", "Cabbage", "test"])
 
     def test_find_different_ingredients(self):
         list_of_ingredients_and_method = ["Beef", "Tomatoes", "Onions", "Cabbage"]
         spare_ingredients = ["Beef", "Tomatoes", "Onions", "test"]
-        self.assertEqual("test")
+        self.assertEqual(functions.find_different_ingredients(list_of_ingredients_and_method,spare_ingredients),"test")
     
     def test_random_remove(self):
         list_of_ingredients_and_method = ["Beef", "Tomatoes", "Onions", "Cabbage"]
         length = len(list_of_ingredients_and_method)
         remove = True
         spare_ingredients = ["test"]
-        removed_list = random_remove(list_of_ingredients_and_method, remove, spare_ingredients)
+        removed_list = functions.random_remove(list_of_ingredients_and_method, remove, spare_ingredients)
         len_removed_list = len(removed_list)
 
         self.assertTrue(length - len_removed_list == 1)
