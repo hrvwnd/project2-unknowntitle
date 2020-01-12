@@ -15,8 +15,6 @@ class TestServiceFunction(TestBase):
     def test_method_generate(self):
         list_of_methods = ["Fried", "Roasted", "Boiled", "Steamed", "Grilled", "Baked", "Stewed"]
         method = routes.method_generate()
-        method = method.text
-        method = eval(str(method))
 
         self.assertIn(method, list_of_methods)
 

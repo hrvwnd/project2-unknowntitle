@@ -14,8 +14,6 @@ class TestServiceFunction(TestBase):
 
     def test_ingredients_generate(self):
         ingredients = routes.generate_recipe_ingredients()
-        ingredients = ingredients.text
-        ingredients = eval(str(ingredients))
 
         self.assertTrue(3 <= len(ingredients) <7)
 
