@@ -99,5 +99,4 @@ class TestServiceFunctions(TestBase):
         ingredients = ["aaaa","bbbb"]
         method = "cccc"
         spare_ingredients = ["dddd"]
-        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),3) and\
-             self.assertTrue(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),["aaaa","bbbb","cccc","dddd"])
+        self.assertTrue(len(routes.add_or_delete_parts(ingredients, method, spare_ingredients)),3) and self.assertTrue(routes.add_or_delete_parts(ingredients, method, spare_ingredients),["aaaa","bbbb","cccc","dddd"])
