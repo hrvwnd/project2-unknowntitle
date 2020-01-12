@@ -18,7 +18,7 @@ class TestServiceRoutes(TestBase):
         print (ingredients)
         for i in ingredients:
             print(i)
-        self.assertTrue(3 <= len(ingredients) <7)
+        self.assertTrue(3 <= len(ingredients) =<7)
 
 
 class TestServiceFunction(TestBase):
@@ -28,9 +28,9 @@ class TestServiceFunction(TestBase):
     # test_random_number_generator() not possible without statistical analysis
     def test_random_number_generator_range():
         random_number = routes.random_number_generator()
-        self.assertTrue(3 <= random_number <7)
+        self.assertTrue(3 <= random_number <=7)
 
-    
+
     
 
 
