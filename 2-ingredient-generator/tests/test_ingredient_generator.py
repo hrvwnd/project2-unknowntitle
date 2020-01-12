@@ -14,6 +14,7 @@ class TestServiceFunction(TestBase):
 
     def test_ingredients_generate(self):
         ingredients = routes.generate_recipe_ingredients()
+        ingredients = eval(ingredients)
         print (ingredients)
         for i in ingredients:
             print(i)
