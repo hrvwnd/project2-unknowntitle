@@ -73,5 +73,5 @@ class TestServiceFunctions(TestBase):
         self.assertTrue(length - len_added_list == 0)
 
     def test_count_letters(self):
-        list_of_ingredients_and_method = [1,2,3,4,5]
-        self.assertEqual(functions.count_letters(list_of_ingredients_and_method),5)
+        list_of_ingredients_and_method = ["one","two","three"]
+        self.assertEqual(functions.count_letters(list_of_ingredients_and_method),11)
