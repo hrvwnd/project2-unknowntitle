@@ -12,9 +12,16 @@ class TestBase(TestCase):
 
 class TestServiceRoutes(TestBase):
 
-    def test_ingredients_generate(self):
-        pass 
+    def test_final_recipe_parts(self):
+        ingredients= routes.final_recipe_parts()
+
+        lingredients = eval(ingredients)
+        print (ingredients)
+        for i in ingredients:
+            print(i)
+        self.assertTrue(3 <= len(ingredients) <=8)
+    
 
 
-        
+
         
