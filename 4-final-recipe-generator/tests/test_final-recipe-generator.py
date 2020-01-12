@@ -29,6 +29,6 @@ class TestServiceFunctions(TestBase):
     method = "Grilled"
     spare_ingredients = ["Beef","Onions","Olives","Pork","Red Cabbage","Brussels"]
 
-    def test_add_or_delete_parts(self, )
+    def test_add_or_delete_parts(self,ingredients,method,spare_ingredients)
         self.assert routes.add_or_delete_parts(ingredients,method,spare_ingredients)
         
