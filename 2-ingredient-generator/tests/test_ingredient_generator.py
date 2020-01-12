@@ -30,8 +30,7 @@ class TestServiceFunction(TestBase):
         random_number = routes.random_number_generator()
         self.assertTrue(3 <= random_number <7)
 
-    def test_vegetarian():
-        self.assert routes.vegetarian() == True or routes.vegetarian() == False
+    
     
 
 
