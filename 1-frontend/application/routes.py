@@ -9,6 +9,8 @@ import requests
 
 @app.route("/")
 @app.route("/home", methods = ["GET", "POST"])
+# HELLO FUTURE HARVEY
+# Change the home code to show the ingredients first without the generate button to see if an error still occurs 
 def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
