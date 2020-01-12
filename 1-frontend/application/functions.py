@@ -7,6 +7,7 @@ from application.models import Recipes, Ingredients, Methods
 
 # Calculator for number of ingredients required for the
 # number of people the recipe needs to serve
+# Not used right now but useful for future feature of app 
 def ingredient_quanity(number_of_people_to_serve, default_quantity_of_food):
     # by default the number of people a meal will serve is 2
     if number_of_people_to_serve == 2: # if people to serve is 2: return the defauly quantity

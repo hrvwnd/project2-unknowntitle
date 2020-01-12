@@ -3,7 +3,7 @@ from flask import abort, url_for
 from flask_testing import TestCase
 from os import getenv
 from application import app, db
-from application.models import # CHANGE ME 
+from application.models import Recipes
 
 class UnitBase(TestCase):
     def create_app(self):
@@ -20,13 +20,25 @@ class UnitBase(TestCase):
         db.drop_all()
         db.create_all()
 
-        # CHANGE ME 
-        # Add create test tables 
+        recipe1 = Recipes(name = "Tomato Pasta", item1 = "Onions", item2 = "Carrots", item3 = "Cellary",\
+             item4 = "Tomatoes", item5 ="fried", item6 = " ", item7 = " ")
+
+        recipe2 = Recipes(name = "beef stew", item1 = "beef", item2 = "Carrots", item3 = "Cellary",\
+             item4 = "Tomatoes", item5 ="Onions", item6 = "stewed", item7 = " ")
+        
+        recipe3 = Recipes(name = "something weird", item1 = "Peas", item2 = "Limes", item3 = "Kale",\
+             item4 = "Turnip", item5 ="Boiled", item6 = " ", item7 = " ")
+
+        db.session.add(recipe1)
+        db.session.add(recipe2)
+        db.session.add(recipe3)
+        db.session.commit()
 
     def TearDown(self):
         # drops all created databases 
         print ("TESTING")
         db.session.remove()
+        
 
         db.drop_all()
 
