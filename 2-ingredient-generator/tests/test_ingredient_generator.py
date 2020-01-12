@@ -26,7 +26,7 @@ class TestServiceFunction(TestBase):
     # test_random_list_item requires a csv to test with
 
     # test_random_number_generator() not possible without statistical analysis
-    def test_random_number_generator_range():
+    def test_random_number_generator_range(self):
         random_number = routes.random_number_generator()
         self.assertTrue(3 <= random_number <=7)
 
