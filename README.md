@@ -16,10 +16,10 @@
 
 ## entity relation diagram 
 An entity relationship diagram consisting of 1 Table for Recipes containing different ingredients and a method of cooking
-![ERD](https://imgur.com/PcTS0I4)
+![ERD](https://imgur.com/PcTS0I4.png)
 ## Final Trello
-![TRELLO](https://imgur.com/I6SKF9L)
+![TRELLO](https://imgur.com/I6SKF9L.png)
 ## Use Case Scenario
 Add me 
 ## Risk Assessment 
-![RA](https://imgur.com/GcF5lAU)
+![RA](https://imgur.com/GcF5lAU.png)
