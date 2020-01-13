@@ -2,8 +2,8 @@ import requests
 from random import randint
 
 # testing purposes
-ingredients = ['Green Beans', 'Peppers', 'Potatoes', 'Avocado', 'Mushrooms']
-ingredients2 = ['Green Beans', 'Peppers', 'Bacon', 'food']
+#ingredients = ['Green Beans', 'Peppers', 'Potatoes', 'Avocado', 'Mushrooms']
+#ingredients2 = ['Green Beans', 'Peppers', 'Bacon', 'food']
 
 
 def join_list(ingredients, method):
@@ -82,4 +82,4 @@ def add_or_delete_parts(ingredients, method, spare_ingredients):
 
     elif count <= 20: # lower than 20, add an ingredient to the list
         return random_remove(list_of_ingredients_and_method, False, spare_ingredients)
-        
+    

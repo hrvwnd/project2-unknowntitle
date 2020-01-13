@@ -4,4 +4,5 @@
 /__pycache__/
 /application/__pycache__/
 *.docx
+*.pptx
 /trello-progress

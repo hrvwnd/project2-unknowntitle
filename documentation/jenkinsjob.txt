@@ -1,0 +1,20 @@
+pwd
+ls
+export build="${BUILD_NUMBER}"
+#image="jenkins-swarm:5000/127.0.0.1:5000/1-frontend-${BUILD_NUMBER}"
+#image="jenkins-swarm:5000/127.0.0.1:5000/4-final-recipe-generator-${BUILD_NUMBER}"
+#image="jenkins-swarm:5000/127.0.0.1:5000/2-ingredient-generator-${BUILD_NUMBER}"
+#image="jenkins-swarm:5000/127.0.0.1:5000/3-method-generator-${BUILD_NUMBER}"
+echo hello
+docker system prune -af
+docker-compose up -d --build
+docker-compose down --volumes
+docker-compose push
+echo ssh
+ssh recipe-app << EOF
+echo ssh-success
+export build="${BUILD_NUMBER}"
+echo buildVariable
+docker stack deploy --compose-file recipe-generator/docker-compose.yaml recipe-generator-app
+#docker service update --image ${image} recipe-app
+EOF
