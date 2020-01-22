@@ -4,6 +4,7 @@
 [swarm-master]
 35.246.86.91 # recipe-app
 35.246.44.85  # recipe-app
+35.178.97.245 # aws test
 
 [swarm-master:vars]
 ansible_user=hrvwnd

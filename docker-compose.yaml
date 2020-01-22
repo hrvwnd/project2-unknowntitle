@@ -20,7 +20,7 @@ services:
 
 
   1-frontend:
-    image: jenkins-swarm:5000/1-frontend:$build
+    image: jenkins-swarm:5000/1-frontend
     build: 
       context: ./1-frontend
       dockerfile: Dockerfile
@@ -40,7 +40,7 @@ services:
 
   4-final-recipe-generator:
     #image: 4-final-recipe-generator
-    image: jenkins-swarm:5000/4-final-recipe-generator:$build
+    image: jenkins-swarm:5000/4-final-recipe-generator
     build: 
         context: ./4-final-recipe-generator
         dockerfile: Dockerfile
@@ -53,7 +53,7 @@ services:
     
   2-ingredient-generator:
     #image: 2-ingredient-generator
-    image: jenkins-swarm:5000/2-ingredient-generator:$build
+    image: jenkins-swarm:5000/2-ingredient-generator
     build:
         context: ./2-ingredient-generator
         dockerfile: Dockerfile
@@ -63,7 +63,7 @@ services:
 
   3-method-generator:
     # image: 3-method-generator
-    image: jenkins-swarm:5000/3-method-generator:$build
+    image: jenkins-swarm:5000/3-method-generator
     build:
         context: ./3-method-generator
         dockerfile: Dockerfile
