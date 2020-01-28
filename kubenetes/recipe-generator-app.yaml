@@ -34,6 +34,7 @@ spec:
   ports: 
   - protocol: TCP
     port: 5001
+    targetPort: 5001
   type: ClusterIP
 ---
 
@@ -41,21 +42,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 2-ingredients-generator
+  name: 2-ingredient-generator
   labels: 
-    app: 2-ingredients-generator
+    app: 2-ingredient-generator
 spec:
   selector:
     matchLabels:
-      app: 2-ingredients-generator
+      app: 2-ingredient-generator
   template:
     metadata:
       labels:
-        app: 2-ingredients-generator
+        app: 2-ingredient-generator
     spec:
       containers:
-      - name: 2-ingredients-generator
-        image: jenkinsgke:5000/2-ingredients-generator
+      - name: 2-ingredient-generator
+        image: jenkinsgke:5000/2-ingredient-generator
         ports:
         - containerPort: 5002
         env:
