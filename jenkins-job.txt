@@ -1,0 +1,7 @@
+docker-compose build
+echo "PUSH TO REPO"
+docker-compose push
+echo "KUBE STAGE"
+cd /var/lib/jenkins/workspace/jenkinskube/kubenetes/
+pwd
+sed "s/{{BUILD}}/${BUILD_NUMBER}/g;s/{{MYSQL_USER}}/${MYSQL_USER}/g;s/{{MYSQL_PASSWORD}}/${MYSQL_PASSWORD}/g;s/{{MYSQL_HOST}}/${MYSQL_HOST}/g;s/{{MYSQL_DB}}/${MYSQL_DB}/g;s/{{SECRET_KEY}}/${SECRET_KEY}/g" ./recipe-generator-app.yaml | kubectl apply -f -
