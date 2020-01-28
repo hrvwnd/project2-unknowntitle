@@ -23,6 +23,17 @@ spec:
         env:
         - name: SERVER_PORT
           value: "5001"
+        - name: MYSQL_USER
+          value: {{MYSQL_USER}}
+        - name: MYSQL_HOST
+          value: {{MYSQL_HOST}}
+        - name: MYSQL_DB
+          value: {{MYSQL_DB}}
+        - name: MYSQL_PASSWORD
+          value: {{MYSQL_PASSWORD}}
+        - name: SECRET_KEY
+          value: {{SECRET_KEY}}
+        
 ---
 apiVersion: v1
 kind: Service
