@@ -1,0 +1,167 @@
+# This file configures the hello-world app which serves public web traffic.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 1-frontend
+  labels: 
+    app: 1-frontend
+spec:
+  selector:
+    matchLabels:
+      app: 1-frontend
+  template:
+    metadata:
+      labels:
+        app: 1-frontend
+    spec:
+      containers:
+      - name: 1-frontend
+        image: jenkinsgke:5000/1-frontend:latest
+        ports:
+        - containerPort: 5001
+        env:
+        - name: SERVER_PORT
+          value: "5001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: 1-frontend
+  ports: 
+  - protocol: TCP
+    port: 5001
+  type: ClusterIP
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2-ingredients-generator
+  labels: 
+    app: 2-ingredients-generator
+spec:
+  selector:
+    matchLabels:
+      app: 2-ingredients-generator
+  template:
+    metadata:
+      labels:
+        app: 2-ingredients-generator
+    spec:
+      containers:
+      - name: 2-ingredients-generator
+        image: jenkinsgke:5000/2-ingredients-generator
+        ports:
+        - containerPort: 5002
+        env:
+        - name: SERVER_PORT
+          value: "5002"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingredients
+spec:
+  selector:
+    app: 2-ingredients
+  ports: 
+  - protocol: TCP
+    port: 5002
+  type: ClusterIP
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 3-method-generator
+  labels: 
+    app: 3-method-generator
+spec:
+  selector:
+    matchLabels:
+      app: 3-method-generator
+  template:
+    metadata:
+      labels:
+        app: 3-method-generator
+    spec:
+      containers:
+      - name: 3-method-generator
+        image: jenkinsgke:5000/3-method-generator
+        ports:
+        - containerPort: 5003
+        env:
+        - name: SERVER_PORT
+          value: "5003"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: method-generator
+spec:
+  selector:
+    app: 3-method-generator
+  ports: 
+  - protocol: TCP
+    port: 5003
+  type: ClusterIP
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 4-final-recipe-generator
+  labels: 
+    app: 4-final-recipe-generator
+spec:
+  selector:
+    matchLabels:
+      app: 4-final-recipe-generator
+  template:
+    metadata:
+      labels:
+        app: 4-final-recipe-generator
+
+    spec:
+      containers:
+      - name: 4-final-recipe-generator
+        image: jenkinsgke:5000/4-final-recipe-generator
+        ports:
+        - containerPort: 5004
+        env:
+        - name: SERVER_PORT
+          value: "5004"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: final-recipe-generator
+spec:
+  selector:
+    app: 4-final-recipe-generator
+  ports: 
+  - protocol: TCP
+    port: 5004
+  type: ClusterIP
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: recipe-generator-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5001
+  type: LoadBalancer

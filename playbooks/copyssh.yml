@@ -1,4 +1,3 @@
----
 - name: "Generate key "Generate key Pair"
   hosts: localhost
   connection: local

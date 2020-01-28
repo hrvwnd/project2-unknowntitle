@@ -1,6 +1,5 @@
 [jenkins]
-35.246.104.33 # jenkins-swarm
-35.189.105.78 # jenkins-swarm
+35.197.234.229 #jenkins IP
 [swarm-master]
 35.246.86.91 # recipe-app
 35.246.44.85  # recipe-app

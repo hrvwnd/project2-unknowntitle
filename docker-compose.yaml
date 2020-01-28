@@ -52,7 +52,7 @@ services:
 
   4-final-recipe-generator:
     #image: 4-final-recipe-generator
-    image: j127.0.0.1:5000/4-final-recipe-generator
+    image: 127.0.0.1:5000/4-final-recipe-generator
     build: 
         context: ./4-final-recipe-generator
         dockerfile: Dockerfile
