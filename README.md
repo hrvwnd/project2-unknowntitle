@@ -1,5 +1,6 @@
 # Randomized Recipe Game
-# A service orientated project 
+# A service orientated project
+The second project I made as part of QA Consulting training
 ## Installation
 ### *Prerequisites:* Ansible, 3 VMs, one for jenkins and one for the app to deploy one as well as a SQL server (all online and running)
 * Start by changing the IP addresses in the inventory to those of your own servers
