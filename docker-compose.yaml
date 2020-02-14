@@ -17,15 +17,6 @@ services:
     depends_on: 
       - 1-frontend
       - 4-final-recipe-generator
-  x-ray:
-        build: .
-        ports:
-          - "2000:2000/udp"
-        command: --local-mode
-        environment:
-          AWS_ACCESS_KEY_ID:
-          AWS_SECRET_ACCESS_KEY:
-          AWS_REGION: "eu-west-2"
 
   1-frontend:
     image: jenkins-swarm:5000/1-frontend
@@ -35,8 +26,6 @@ services:
     ports:
       - target: 5000
         protocol: tcp
-    links:
-      - x-ray
     deploy:
       replicas: 3   
     environment:
@@ -62,8 +51,6 @@ services:
     depends_on: 
       - 2-ingredient-generator
       - 3-method-generator
-    links:
-      - x-ray
     environment:
     - AWS_XRAY_TRACING_NAME=myapp
     - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
@@ -79,8 +66,6 @@ services:
     # image: jenkins-swarm:5000/2-ingredient-generator
     deploy:
       replicas: 3
-    links:
-      - x-ray
     environment:
     - AWS_XRAY_TRACING_NAME=myapp
     - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
@@ -94,8 +79,6 @@ services:
         dockerfile: Dockerfile
     deploy:
       replicas: 3
-    links:
-      - x-ray
     environment:
     - AWS_XRAY_TRACING_NAME=myapp
     - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000

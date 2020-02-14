@@ -13,6 +13,7 @@ def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     list_of_ingredients_and_method = ["Press Generate button to create a potential recipe"]
+    list_of_lists = []
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
 
@@ -20,11 +21,10 @@ def home():
             recipe_response = recipe_response.text
             recipe_response = eval(str(recipe_response))
             list_of_ingredients_and_method = recipe_response
+            list_of_lists.append(list_of_ingredients_and_method)
             print (list_of_ingredients_and_method)
 
             if recipe_name_form.validate_on_submit():
-                print ("-----------------------------------------READ ME --------------------------")
-                print (list_of_ingredients_and_method)
 
                 if list_of_ingredients_and_method == ["Press Generate button to create a potential recipe"] \
                     or list_of_ingredients_and_method == ["You need to generate recipes first"]: 
@@ -33,11 +33,10 @@ def home():
 
                 while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
                     list_of_ingredients_and_method.append(" ")
-
-                print ("------------------------------READ ME ---------------------------------")
-                print ("making sure theres 7 items in list")
-                print (len(list_of_ingredients_and_method))
-                print (list_of_ingredients_and_method)
+                # TEST MEEEEEEEEEE
+                list_of_ingredients_and_method = list_of_lists[-2]
+                # TEST ME!!!
+                
                 new_recipe = Recipes(
                     name = recipe_name_form.recipe_name.data,
                     item1 = list_of_ingredients_and_method[0],
