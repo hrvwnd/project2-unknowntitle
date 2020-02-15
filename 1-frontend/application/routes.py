@@ -2,7 +2,7 @@
 from math import ceil #needed to round decimals to the next number 
 from application import app, db
 from flask import Flask, request, render_template, url_for, flash, redirect
-from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe 
+from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe, RegistrationForm, LoginForm
 from application.models import Recipes, Users
 import requests
 #Routes and other functions for application
@@ -78,9 +78,9 @@ def recipes():
 
     return render_template("recipes.html", title = "recipes", form=form, results = RecipeData) 
 
-@app.route('/account', methods = ["GET","POST"])
-def account():
-    form = # change me - add form
+@app.route('/register', methods = ["GET","POST"])
+def register():
+    form = RegistrationForm
 
 
         
