@@ -78,6 +78,7 @@ def recipes():
 
     return render_template("recipes.html", title = "recipes", form=form, results = RecipeData) 
 
+
 """
 @app.route('/register', methods = ["GET","POST"])
 def register():

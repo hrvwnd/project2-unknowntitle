@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo,ValidationError
-from application.__init__ import LoginManager
-from flask_login import LoginManager, current_user
+#from application.__init__ import LoginManager
+#from flask_login import LoginManager, current_user
 from application.models import Recipes, Users
 
 
