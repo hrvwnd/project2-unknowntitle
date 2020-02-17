@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, EqualTo,ValidationError
 #from application.__init__ import LoginManager
 #from flask_login import LoginManager, current_user
@@ -8,6 +8,7 @@ from application.models import Recipes, Users
 
 class GenerateIngredientsForm(FlaskForm): # Button to select random recipe ingredients and method 
     submit = SubmitField("Generate Recipe Idea")
+
 
 class RecipeNameForm(FlaskForm): # Input for user to name a recipe
     recipe_name = StringField("Recipe Name",
@@ -25,6 +26,7 @@ class RecipeNameForm(FlaskForm): # Input for user to name a recipe
             raise ValidationError("This recipe name already exists \n \
                 Please choose a new name for the recipe")
 
+
 class SearchForRecipe(FlaskForm):
     # Search for recipe Form
     recipe_name = StringField("Recipe Name",
@@ -39,7 +41,45 @@ class SearchForRecipe(FlaskForm):
     def validate_recipe_name(self,recipe_name):
         exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())
         if not exists:
-            raise ValidationError("This recipe does not yet exist")
+            raise ValidationError("This recipe does not exist")
+
+
+class UpdateForm(FlaskForm):
+    #myChoices = ["Fried", "Roasted", "Boiled", "Steamed", "Grilled", "Baked", "Stewed"]
+    #
+    #method = SelectField(u'Method Type',
+    #choices = myChoices, 
+    #validators = [
+    #    DataRequired()
+    #    ]
+    #    )
+
+    recipe_name = StringField("New Recipe Name",
+    validators = [
+        DataRequired(),
+        Length(min = 2, max = 30)
+    ]
+    )
+
+    submit = SubmitField("Submit")
+
+    def validate_recipe_name(self,recipe_name):
+        exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())
+        if exists:
+            raise ValidationError("This Recipe Name Already Exists")
+
+
+class DeleteForm(FlaskForm):
+    deleteChoices = [(1,"Confirm"), (2,"Cancel")]
+    delete = SelectField(u'Method Type',
+    choices = deleteChoices,
+    default = 2 
+    validators = [
+        DataRequired()
+        ]
+        )
+    submit = SubmitField("Submit")
+
 
 # Account registration and Login
 # Disabled for now

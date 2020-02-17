@@ -2,11 +2,15 @@
 from math import ceil #needed to round decimals to the next number 
 from application import app, db
 from flask import Flask, request, render_template, url_for, flash, redirect
-from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe
+from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe, updateform, DeleteForm
 from application.models import Recipes, Users
+from application.fuctions import findmethodfromdb
 import requests
 #Routes and other functions for application
 
+
+#--------------------------- Generator --------------------------- 
+#---------------------------------------------------------------
 @app.route("/")
 @app.route("/home", methods = ["GET", "POST"])
 def home():
@@ -65,6 +69,9 @@ def home():
         list_of_ingredients_and_method = list_of_ingredients_and_method)
 
 
+#--------------------------- Recipes --------------------------- 
+#---------------------------------------------------------------
+###### Search for Recipes ######
 @app.route('/recipes',methods=["GET","POST"])
 def recipes():
     form = SearchForRecipe()
@@ -73,12 +80,66 @@ def recipes():
         name = form.recipe_name.data
         query = Recipes.query.filter_by(name = name).all()
         print (query)
+            
         return render_template("recipes.html", title= "recipes", form = form, \
-            results = query)
+            results = query, updateform = updateform, DeleteForm = DeleteForm)
 
     return render_template("recipes.html", title = "recipes", form=form, results = RecipeData) 
 
+###### Update Method ######
+@app.route('/update', methods = ['GET', 'POST'])
+def updatemethod():
+    searchform = SearchForRecipe()
+    updateform = updateform()
+    info = "Search for a recipe to rename"
+    if searchform.validate_on_submit():
+        name = str(searchform.recipe_name.data)
+        info = "Enter a new name for: " + name
+        #oldmethod = findmethodfromdb(recipe)
+        recipe = Recipes.query.filter_by(name = name).first()
+        #updateform.item1, updateform.item2, updateform.item3, updateform.item4, updateform.item5, updateform.item6, updateform.item7]
+        if updateform.validate_on_submit():
+            newname = updateform.recipe_name.data
+            recipe.name = newname
+            db.session.commit()
+            return redirect(url_for('recipes'))
 
+        return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info)
+    
+    return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info)
+
+###### Delete Recipe ######
+# You might need to add name to the render_template. Test it first to see if it works.
+@app.route('/delete', methods = ['GET', 'POST'])
+def deleterecipe():
+    searchform = SearchForRecipe()
+    deleteform = DeleteForm()
+    info = "Enter a Recipe to Delete"
+    if searchform.validate_on_submit():
+        name = str(searchform.recipe_name.data)
+        info = "Delete: " + name + "?"
+        if deleteform.validate_on_submit():
+            delete = deleteform.choices.data
+            if delete == "Confirm" or if delete == 2:
+                recipe = Recipes.query.filter_by(name = name).first()
+                db.session.delete(recipe)
+                db.session.commit()
+                info = name + " has been deleted"
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+
+            elif delete == "Cancel" or elif delete == 2:
+                info = "Delete operation on " + name + " has been cancelled"
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+
+            else:
+                info = "An error has occured and the the recipe cannot be deleted"
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+        return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)        
+    return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+
+
+#--------------------------- Account (will add in future update) --------------------------- 
+#---------------------------------------------------------------
 """
 @app.route('/register', methods = ["GET","POST"])
 def register():
