@@ -1,5 +1,5 @@
 from application import db
-from flask_login import Usermixin
+#from flask_login import Usermixin
 
 class Recipes(db.Model):
         id = db.Column(db.Integer, primary_key=True, unique = True)
