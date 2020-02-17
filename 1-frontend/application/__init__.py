@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 app.config['SECRET_KEY'] = '43riu34jhferugfhrf83h98eh3fuwhergiurhe'
 
-#db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 #bcrypt = Bcrypt(app)
 
 
