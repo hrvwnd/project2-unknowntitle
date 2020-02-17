@@ -13,7 +13,7 @@ class Recipes(db.Model):
         item7 = db.Column(db.String(30), nullable=True, unique= False)
         db.relationship('Users', backref = 'recipe', lazy = True)
 
-
+# Currently creating table but not in use
 class Users(db.Model):
         id = db.Column(db.Integer, primary_key=True, unique = True)
         username = db.Column(db.String(30), nullable=False, unique= True)

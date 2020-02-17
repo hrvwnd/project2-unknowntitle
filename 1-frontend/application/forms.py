@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo,ValidationError
+from application.__init__ import LoginManager
+from flask_login import LoginManager, current_user
 from application.models import Recipes, Users
 
 
@@ -24,6 +26,7 @@ class RecipeNameForm(FlaskForm): # Input for user to name a recipe
                 Please choose a new name for the recipe")
 
 class SearchForRecipe(FlaskForm):
+    # Search for recipe Form
     recipe_name = StringField("Recipe Name",
     validators = [
         DataRequired(),
@@ -38,6 +41,9 @@ class SearchForRecipe(FlaskForm):
         if not exists:
             raise ValidationError("This recipe does not yet exist")
 
+# Account registration and Login
+# Disabled for now
+"""
 class RegistrationForm(FlaskForm):
     username = StringField('User Name', 
     validators=[
@@ -62,7 +68,8 @@ class RegistrationForm(FlaskForm):
         user = Users.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError('Email is already in use!')
-
+    """
+"""
 class LoginForm(FlaskForm):
     class LoginForm(FlaskForm):
     email = StringField('Email',
@@ -79,3 +86,4 @@ class LoginForm(FlaskForm):
     )
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+    """
