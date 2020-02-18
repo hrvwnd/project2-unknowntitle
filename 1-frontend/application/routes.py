@@ -88,7 +88,7 @@ def recipes():
 
 ###### Update Method ######
 @app.route('/update', methods = ['GET', 'POST'])
-def updatemethod():
+def updaterecipe():
     searchform = SearchForRecipe()
     updateform = UpdateForm()
     info = "Search for a recipe to rename"
