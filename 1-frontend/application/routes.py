@@ -87,6 +87,7 @@ def updaterecipe():
     searchform = SearchForRecipe()
     updateform = UpdateForm()
     info = "Search for a recipe to rename"
+    recipe = ""
     if searchform.validate_on_submit():
         name = str(searchform.recipe_name.data)
         info = "Enter a new name for: " + name
@@ -110,6 +111,7 @@ def deleterecipe():
     searchform = SearchForRecipe()
     deleteform = DeleteForm()
     info = "Enter a Recipe to Delete"
+    recipe=""
     if searchform.validate_on_submit():
         name = str(searchform.recipe_name.data)
         info = "Delete: " + name + "?"
