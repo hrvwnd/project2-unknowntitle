@@ -73,7 +73,7 @@ class DeleteForm(FlaskForm):
     deleteChoices = [(1,"Confirm"), (2,"Cancel")]
     delete = SelectField(u'Method Type',
     choices = deleteChoices,
-    default = 2 
+    default = 2, 
     validators = [
         DataRequired()
         ]
