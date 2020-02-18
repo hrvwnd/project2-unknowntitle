@@ -23,7 +23,7 @@ def home():
 
         if recipe_response.status_code == 200:
             recipe_response = recipe_response.text
-            recipe_response = eval(str(recipe_response))
+            recipe_response = eval(recipe_response)
             list_of_ingredients_and_method = recipe_response
             list_of_lists.append(list_of_ingredients_and_method)
             print (list_of_ingredients_and_method)
@@ -38,7 +38,7 @@ def home():
                 while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
                     list_of_ingredients_and_method.append(" ")
                 # TEST MEEEEEEEEEE
-                list_of_ingredients_and_method = list_of_lists[-2]
+                list_of_ingredients_and_method = list_of_lists[-2:]
                 # TEST ME!!!
                 
                 new_recipe = Recipes(
