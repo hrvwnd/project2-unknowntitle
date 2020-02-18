@@ -120,14 +120,14 @@ def deleterecipe():
         info = "Delete: " + name + "?"
         if deleteform.validate_on_submit():
             delete = deleteform.choices.data
-            if delete == "Confirm" or if delete == 2:
+            if delete in ("Confirm", 2):
                 recipe = Recipes.query.filter_by(name = name).first()
                 db.session.delete(recipe)
                 db.session.commit()
                 info = name + " has been deleted"
                 return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
 
-            elif delete == "Cancel" or elif delete == 2:
+            elif delete in ("Cancel", 2):
                 info = "Delete operation on " + name + " has been cancelled"
                 return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
 
