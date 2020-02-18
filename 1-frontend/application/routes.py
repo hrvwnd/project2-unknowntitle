@@ -11,7 +11,7 @@ import requests
 
 #--------------------------- Generator --------------------------- 
 #---------------------------------------------------------------
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 @app.route("/home", methods = ["GET", "POST"])
 def home():
     GIform = GenerateIngredientsForm()
