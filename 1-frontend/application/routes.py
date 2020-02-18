@@ -40,7 +40,7 @@ def home():
                 # TEST MEEEEEEEEEE
                 print (list_of_lists)
                 print(list_of_ingredients_and_method)
-                list_of_ingredients_and_method = list_of_lists[-2]
+                list_of_ingredients_and_method = list_of_lists[0]
                 # TEST ME!!!
                 
                 new_recipe = Recipes(
