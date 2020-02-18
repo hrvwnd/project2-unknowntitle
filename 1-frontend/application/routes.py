@@ -99,7 +99,7 @@ def updaterecipe():
             db.session.commit()
             return redirect(url_for('recipes'))
 
-        return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info)
+        return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info, results = recipe)
     
     return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info)
 
@@ -120,17 +120,17 @@ def deleterecipe():
                 db.session.delete(recipe)
                 db.session.commit()
                 info = name + " has been deleted"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
 
             elif delete in ("Cancel", 2):
                 info = "Delete operation on " + name + " has been cancelled"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
 
             else:
                 info = "An error has occured and the the recipe cannot be deleted"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
-        return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)        
-    return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info)
+                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
+        return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)        
+    return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
 
 
 #--------------------------- Account (will add in future update) --------------------------- 
