@@ -38,7 +38,7 @@ def home():
                 while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
                     list_of_ingredients_and_method.append(" ")
                 # TEST MEEEEEEEEEE
-                list_of_ingredients_and_method = list_of_lists[-2:]
+                list_of_ingredients_and_method = list_of_lists[-2]
                 # TEST ME!!!
                 
                 new_recipe = Recipes(
