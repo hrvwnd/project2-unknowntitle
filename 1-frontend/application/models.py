@@ -11,11 +11,11 @@ class Recipes(db.Model):
         item5 = db.Column(db.String(30), nullable=True, unique= False)
         item6 = db.Column(db.String(30), nullable=True, unique= False)
         item7 = db.Column(db.String(30), nullable=True, unique= False)
-        db.relationship('Users', backref = 'recipe', lazy = True)
+        #db.relationship('Users', backref = 'recipe', lazy = True)
 
 # Currently creating table but not in use
 class Users(db.Model):
         id = db.Column(db.Integer, primary_key=True, unique = True)
         username = db.Column(db.String(30), nullable=False, unique= True)
         email = db.Column(db.String(30), nullable=False, unique= True)
-        recipe_id = db.Column(db.Integer,db.ForeignKey('Recipes.id'))
+        #recipe_id = db.Column(db.Integer,db.ForeignKey('Recipes.id'))
