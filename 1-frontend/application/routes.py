@@ -2,7 +2,7 @@
 from math import ceil #needed to round decimals to the next number 
 from application import app, db
 from flask import Flask, request, render_template, url_for, flash, redirect
-from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe, updateform, DeleteForm
+from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe, UpdateForm, DeleteForm
 from application.models import Recipes, Users
 from application.fuctions import findmethodfromdb
 import requests
@@ -90,7 +90,7 @@ def recipes():
 @app.route('/update', methods = ['GET', 'POST'])
 def updatemethod():
     searchform = SearchForRecipe()
-    updateform = updateform()
+    updateform = UpdateForm()
     info = "Search for a recipe to rename"
     if searchform.validate_on_submit():
         name = str(searchform.recipe_name.data)
