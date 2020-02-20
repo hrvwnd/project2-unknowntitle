@@ -118,7 +118,7 @@ def deleterecipe():
             info = str(name) + " has not been deleted "
             return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
     
-    return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
+    return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = recipe)
 
 
 #--------------------------- Account (will add in future update) --------------------------- 
