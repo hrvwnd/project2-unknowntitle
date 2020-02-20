@@ -5,16 +5,16 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <div class="form-group">
-                {{ form.recipe_name.label }}
-                {% if form.recipe_name.errors %}
-                    {{ form.recipe_name }}
+                {{ searchform.recipe_name.label }}
+                {% if searchform.recipe_name.errors %}
+                    {{ searchform.recipe_name }}
                     <div class="error">
-                        {% for error in form.recipe_name.errors %}
+                        {% for error in searchform.recipe_name.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.recipe_name }}
+                    {{ searchform.recipe_name }}
                 {% endif %}
             </div>
             <br>
