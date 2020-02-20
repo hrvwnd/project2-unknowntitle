@@ -88,8 +88,8 @@ def updaterecipe():
     info = "Search for a recipe to rename"
     recipe = ""
     if updateform.validate_on_submit():
-        name = searchform.oldrecipe_name.data
-        newname = searchform.recipe_name.data
+        name = updateform.oldrecipe_name.data
+        newname = updateform.recipe_name.data
         recipe = Recipes.query.filter_by(name = name).first()
         recipe.name = newname
         db.session.commit()
