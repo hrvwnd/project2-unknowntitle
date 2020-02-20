@@ -51,16 +51,16 @@ def home():
                 flash ("Recipe saved" + str(recipe_name_form.recipe_name.data))
                 return redirect(url_for('recipes'))
 
-            return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
+            return render_template("home.html", title = "Recipe Generator", GIform = GIform, recipe_name_form = recipe_name_form, \
                 list_of_ingredients_and_method = list_of_ingredients_and_method)   
 
         else:
             return "404- ingredients not found"
 
-        return render_template("home.html", title = "home", GIform=GIform, recipe_name_form = recipe_name_form, \
+        return render_template("home.html", title = "Recipe Generator", GIform=GIform, recipe_name_form = recipe_name_form, \
             list_of_ingredients_and_method = list_of_ingredients_and_method) 
 
-    return render_template("home.html", title = "home", GIform = GIform, recipe_name_form = recipe_name_form, \
+    return render_template("home.html", title = "Recipe Generator", GIform = GIform, recipe_name_form = recipe_name_form, \
         list_of_ingredients_and_method = list_of_ingredients_and_method)
 
 
@@ -76,10 +76,10 @@ def recipes():
         query = Recipes.query.filter_by(name = name).all()
         print (query)
             
-        return render_template("recipes.html", title= "recipes", form = form, \
+        return render_template("recipes.html", title= "Recipes", form = form, \
             results = query, updateform = updateform, DeleteForm = DeleteForm)
 
-    return render_template("recipes.html", title = "recipes", form=form, results = RecipeData) 
+    return render_template("recipes.html", title = "Recipes", form=form, results = RecipeData) 
 
 ###### Update Method ######
 @app.route('/update', methods = ['GET', 'POST'])
@@ -94,8 +94,8 @@ def updaterecipe():
         recipe.name = newname
         db.session.commit()
         info = str(name) + " has been renamed to: " + str(newname)
-        return render_template("update.html", title= "update", updateform = updateform, info = info)
-    return render_template("update.html", title= "update", updateform = updateform, info = info)
+        return render_template("update.html", title= "Update Recipe Name", updateform = updateform, info = info)
+    return render_template("update.html", title= "Update Recipe Name", updateform = updateform, info = info)
 
 ###### Delete Recipe ######
 # You might need to add name to the render_template. Test it first to see if it works.
@@ -108,17 +108,16 @@ def deleterecipe():
         name = deleteform.deleterecipe.data
         confirm  = deleteform.confirmdelete.data
         if confirm == 1 or confirm == "Confirm":
-            recipe = Recipes.query.filter_by(name = name).all()
-            db.session.delete(recipe)
+            recipe = Recipes.query.filter_by(name = name).delete()
             db.session.commit()
             info = str(name) + " has been deleted"
-            return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
+            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = str(recipe))
         
         else:
             info = str(name) + " has not been deleted "
-            return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
+            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = str(recipe))
     
-    return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = recipe)
+    return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = recipe)
 
 
 #--------------------------- Account (will add in future update) --------------------------- 

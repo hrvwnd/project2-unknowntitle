@@ -80,7 +80,7 @@ class DeleteForm(FlaskForm):
     ]
     )
     deleteChoices = [(1,"Confirm"), (2,"Cancel")]
-    confirmdelete = SelectField('Confirm Delete',
+    confirmdelete = SelectField('Delete: ',
     coerce= int, 
     choices = deleteChoices,
     default = 2, 
@@ -91,7 +91,7 @@ class DeleteForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
-    def validate_deleterecipe_name(self, deleterecipe):
+    def validate_deleterecipe(self, deleterecipe):
         exists = bool(Recipes.query.filter_by(name = deleterecipe.data).first())
         if not exists:
             raise ValidationError("This Recipe doesn't exist")
