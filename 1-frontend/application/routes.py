@@ -92,7 +92,7 @@ def updaterecipe():
         name = str(searchform.recipe_name.data)
         info = "Enter a new name for: " + name
         #oldmethod = findmethodfromdb(recipe)
-        recipe = Recipes.query.filter_by(name = name).first()
+        recipe = Recipes.query.filter_by(name = name).all()
         #updateform.item1, updateform.item2, updateform.item3, updateform.item4, updateform.item5, updateform.item6, updateform.item7]
         if updateform.validate_on_submit():
             newname = updateform.recipe_name.data
