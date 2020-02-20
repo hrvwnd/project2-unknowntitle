@@ -80,7 +80,8 @@ class DeleteForm(FlaskForm):
     ]
     )
     deleteChoices = [(1,"Confirm"), (2,"Cancel")]
-    confirmdelete = SelectField(u'Confirm Delete',
+    confirmdelete = SelectField('Confirm Delete',
+    coerce= int, 
     choices = deleteChoices,
     default = 2, 
     validators = [
