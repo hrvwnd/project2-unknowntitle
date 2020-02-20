@@ -17,6 +17,7 @@ def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     list_of_ingredients_and_method = ["Press Generate button to create a potential recipe"]
+
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
 
@@ -71,6 +72,7 @@ def home():
 def recipes():
     form = SearchForRecipe()
     RecipeData = Recipes.query.all()
+
     if form.validate_on_submit():
         name = form.recipe_name.data
         query = Recipes.query.filter_by(name = name).all()
@@ -86,7 +88,7 @@ def recipes():
 def updaterecipe():
     updateform = UpdateForm()
     info = "Search for a recipe to rename"
-    recipe = ""
+
     if updateform.validate_on_submit():
         name = updateform.oldrecipe_name.data
         newname = updateform.recipe_name.data
@@ -94,7 +96,9 @@ def updaterecipe():
         recipe.name = newname
         db.session.commit()
         info = str(name) + " has been renamed to: " + str(newname)
+
         return render_template("update.html", title= "Update Recipe Name", updateform = updateform, info = info)
+
     return render_template("update.html", title= "Update Recipe Name", updateform = updateform, info = info)
 
 ###### Delete Recipe ######
@@ -103,10 +107,11 @@ def updaterecipe():
 def deleterecipe():
     deleteform = DeleteForm()
     info = "Enter a Recipe to Delete"
-    recipe=""        
+
     if deleteform.validate_on_submit():
         name = deleteform.deleterecipe.data
         confirm  = deleteform.confirmdelete.data
+
         if confirm == 1 or confirm == "Confirm":
             recipe = Recipes.query.filter_by(name = name).delete()
             db.session.commit()
@@ -114,7 +119,7 @@ def deleterecipe():
             return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)
         
         else:
-            info = str(name) + " has not been deleted "
+            info = "You must select 'Confirm' to delete " + str(name)
             return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)
     
     return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)

@@ -16,6 +16,7 @@ def find_different_ingredients(list_of_ingredients_and_method, spare_ingredients
     different_ingredients = list(set(spare_ingredients).difference(list_of_ingredients_and_method))
     if different_ingredients == []:
         return False
+        
     else:
         return different_ingredients
 #print (find_different_ingredients(ingredients, ingredients2))
