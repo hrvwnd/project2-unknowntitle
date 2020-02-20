@@ -61,7 +61,7 @@ class UpdateForm(FlaskForm):
 
     submit = SubmitField("Submit")
 
-    def validate_oldrecipe_name(self,recipe_name):
+    def validate_oldrecipe_name(self,oldrecipe_name):
         exists = bool(Recipes.query.filter_by(name = oldrecipe_name.data).first())
         if not exists:
             raise ValidationError("This Recipe doesn't exist")
