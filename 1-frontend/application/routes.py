@@ -103,28 +103,7 @@ def updaterecipe():
 def deleterecipe():
     deleteform = DeleteForm()
     info = "Enter a Recipe to Delete"
-    recipe=""
-    if searchform.validate_on_submit():
-        name = str(searchform.recipe_name.data)
-        info = "Delete: " + name + "?"
-        if deleteform.validate_on_submit():
-            delete = deleteform.choices.data
-            if delete in ("Confirm", 2):
-                recipe = Recipes.query.filter_by(name = name).first()
-                db.session.delete(recipe)
-                db.session.commit()
-                info = name + " has been deleted"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
-
-            elif delete in ("Cancel", 2):
-                info = "Delete operation on " + name + " has been cancelled"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
-
-            else:
-                info = "An error has occured and the the recipe cannot be deleted"
-                return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
-        return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)        
-    
+    recipe=""        
     if deleteform.validate_on_submit():
         name = deleteform.data
         confirm  = deleetform.choices.data
@@ -134,9 +113,11 @@ def deleterecipe():
             db.session.commit()
             info = str(name) + " has been deleted"
             return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
+        
         else:
             info = str(name) + " has not been deleted "
             return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
+    
     return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
 
 
