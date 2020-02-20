@@ -19,13 +19,11 @@ def home():
     
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
-        list_of_lists = []
         if recipe_response.status_code == 200:
             recipe_response = recipe_response.text
             recipe_response = eval(recipe_response)
             list_of_ingredients_and_method = recipe_response
             print (list_of_ingredients_and_method)
-            list_of_lists.append(list_of_ingredients_and_method)
 
             if recipe_name_form.validate_on_submit():
 
@@ -36,7 +34,6 @@ def home():
 
                 while len(list_of_ingredients_and_method) < 7: # adds empty elements to the list if not at max length
                     list_of_ingredients_and_method.append(" ")
-                list_of_ingredients_and_method = list_of_lists[-2]
                 new_recipe = Recipes(
                     name = recipe_name_form.recipe_name.data,
                     item1 = list_of_ingredients_and_method[0],
@@ -53,16 +50,16 @@ def home():
                 return redirect(url_for('recipes'))
 
             return render_template("home.html", title = "Recipe Generator", GIform = GIform, recipe_name_form = recipe_name_form, \
-                list_of_ingredients_and_method = list_of_ingredients_and_method, list_of_lists = list_of_lists)   
+                list_of_ingredients_and_method = list_of_ingredients_and_method)   
 
         else:
             return "404- ingredients not found"
 
         return render_template("home.html", title = "Recipe Generator", GIform=GIform, recipe_name_form = recipe_name_form, \
-            list_of_ingredients_and_method = list_of_ingredients_and_method, list_of_lists = list_of_lists) 
+            list_of_ingredients_and_method = list_of_ingredients_and_method) 
 
     return render_template("home.html", title = "Recipe Generator", GIform = GIform, recipe_name_form = recipe_name_form, \
-        list_of_ingredients_and_method = list_of_ingredients_and_method, list_of_lists = [])
+        list_of_ingredients_and_method = list_of_ingredients_and_method)
 
 
 #--------------------------- Recipes --------------------------- 
