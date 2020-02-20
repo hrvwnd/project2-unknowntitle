@@ -16,6 +16,7 @@ def home():
     GIform = GenerateIngredientsForm()
     recipe_name_form = RecipeNameForm()
     list_of_ingredients_and_method = ["Press Generate button to create a potential recipe"]
+    list_of_lists = []
     if GIform.is_submitted():
         recipe_response = requests.get("http://4-final-recipe-generator:5004/") 
 
