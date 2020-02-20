@@ -3,7 +3,7 @@
 {% block body_content %}
     <div class="form">
         <form method="POST" action="">
-            {{ form.hidden_tag() }}
+            {{ recipeform.hidden_tag() }}
             <div class="form-group">
                 {{ searchform.recipe_name.label }}
                 {% if searchform.recipe_name.errors %}
