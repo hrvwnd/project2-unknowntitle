@@ -73,8 +73,14 @@ class UpdateForm(FlaskForm):
 
 
 class DeleteForm(FlaskForm):
+    deleterecipe = StringField("Recipe to Delete",
+    validators = [
+        DataRequired(),
+        Length(min = 2, max = 30)
+    ]
+    )
     deleteChoices = [(1,"Confirm"), (2,"Cancel")]
-    delete = SelectField(u'Method Type',
+    confirmdelete = SelectField(u'Confirm Delete',
     choices = deleteChoices,
     default = 2, 
     validators = [
@@ -82,7 +88,11 @@ class DeleteForm(FlaskForm):
         ]
         )
     submit = SubmitField("Submit")
-
+    
+    def validate_deleterecipe_name(self, deleterecipe):
+        exists = bool(Recipes.query.filter_by(name = deleterecipe.data).first())
+        if not exists:
+            raise ValidationError("This Recipe doesn't exist")
 
 # Account registration and Login
 # Disabled for now

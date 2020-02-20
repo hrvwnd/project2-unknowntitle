@@ -101,7 +101,6 @@ def updaterecipe():
 # You might need to add name to the render_template. Test it first to see if it works.
 @app.route('/delete', methods = ['GET', 'POST'])
 def deleterecipe():
-    searchform = SearchForRecipe()
     deleteform = DeleteForm()
     info = "Enter a Recipe to Delete"
     recipe=""
@@ -125,6 +124,19 @@ def deleterecipe():
                 info = "An error has occured and the the recipe cannot be deleted"
                 return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
         return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)        
+    
+    if deleteform.validate_on_submit():
+        name = deleteform.data
+        confirm  = deleetform.choices.data
+        if confirm == 1 or confirm == "Confirm":
+            recipe = Recipes.query.filter_by(name = name).first()
+            db.session.delete(recipe)
+            db.session.commit()
+            info = str(name) + " has been deleted"
+            return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
+        else:
+            info = str(name) + " has not been deleted "
+            return render_template("delete.html", title= "delete", deleteform = deleteform, info = info, results = str(recipe))
     return render_template("delete.html", title= "delete", searchform = searchform, deleteform = deleteform, info = info, results = recipe)
 
 
