@@ -24,7 +24,7 @@ def home():
             recipe_response = eval(recipe_response)
             list_of_ingredients_and_method = recipe_response
             print (list_of_ingredients_and_method)
-            lsit_of_lists.append(list_of_ingredients_and_method)
+            list_of_lists.append(list_of_ingredients_and_method)
 
             if recipe_name_form.validate_on_submit():
 
