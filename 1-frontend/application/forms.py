@@ -45,14 +45,12 @@ class SearchForRecipe(FlaskForm):
 
 
 class UpdateForm(FlaskForm):
-    #myChoices = ["Fried", "Roasted", "Boiled", "Steamed", "Grilled", "Baked", "Stewed"]
-    #
-    #method = SelectField(u'Method Type',
-    #choices = myChoices, 
-    #validators = [
-    #    DataRequired()
-    #    ]
-    #    )
+    oldrecipe_name = StringField("Old Recipe Name",
+    validators = [
+        DataRequired(),
+        Length(min = 2, max = 30)
+    ]
+    )
 
     recipe_name = StringField("New Recipe Name",
     validators = [
@@ -62,6 +60,11 @@ class UpdateForm(FlaskForm):
     )
 
     submit = SubmitField("Submit")
+
+    def validate_oldrecipe_name(self,recipe_name):
+        exists = bool(Recipes.query.filter_by(name = oldrecipe_name.data).first())
+        if not exists:
+            raise ValidationError("This Recipe doesn't exist")
 
     def validate_recipe_name(self,recipe_name):
         exists = bool(Recipes.query.filter_by(name = recipe_name.data).first())

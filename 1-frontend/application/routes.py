@@ -84,25 +84,18 @@ def recipes():
 ###### Update Method ######
 @app.route('/update', methods = ['GET', 'POST'])
 def updaterecipe():
-    searchform = SearchForRecipe()
     updateform = UpdateForm()
     info = "Search for a recipe to rename"
     recipe = ""
-    if searchform.validate_on_submit():
-        name = str(searchform.recipe_name.data)
-        info = "Enter a new name for: " + name
-        #oldmethod = findmethodfromdb(recipe)
-        recipe = Recipes.query.filter_by(name = name).all()
-        #updateform.item1, updateform.item2, updateform.item3, updateform.item4, updateform.item5, updateform.item6, updateform.item7]
-        if updateform.validate_on_submit():
-            newname = updateform.recipe_name.data
-            recipe.name = newname
-            db.session.commit()
-            return redirect(url_for('recipes'))
-
-        return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info, results = recipe)
-    
-    return render_template("update.html", title= "update", searchform = searchform, updateform = updateform, info = info)
+    if updateform.validate_on_submit():
+        name = searchform.oldrecipe_name.data
+        newname = searchform.recipe_name.data
+        recipe = Recipes.query.filter_by(name = name).first()
+        recipe.name = newname
+        db.session.commit()
+        info = str(name) + " has been renamed to: " + str(newname)
+        return render_template("update.html", title= "update", updateform = updateform, info = info)
+    return render_template("update.html", title= "update", updateform = updateform, info = info)
 
 ###### Delete Recipe ######
 # You might need to add name to the render_template. Test it first to see if it works.
