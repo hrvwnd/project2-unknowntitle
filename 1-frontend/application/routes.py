@@ -105,7 +105,7 @@ def deleterecipe():
     info = "Enter a Recipe to Delete"
     recipe=""        
     if deleteform.validate_on_submit():
-        name = deleteform.data
+        name = deleteform.deleterecipe.data
         confirm  = deleteform.choices.data
         if confirm == 1 or confirm == "Confirm":
             recipe = Recipes.query.filter_by(name = name).first()

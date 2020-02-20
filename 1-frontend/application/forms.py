@@ -88,10 +88,7 @@ class DeleteForm(FlaskForm):
         ]
         )
     submit = SubmitField("Submit")
-    
-    def validate_confirmdelete(self, confirmdelete, deleteChoices):
-        if confirmdelete.choices not in deleteChoices:
-            raise ValidationError("Not a Valid Choice")
+
 
     def validate_deleterecipe_name(self, deleterecipe):
         exists = bool(Recipes.query.filter_by(name = deleterecipe.data).first())
