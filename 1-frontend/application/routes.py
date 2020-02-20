@@ -111,13 +111,13 @@ def deleterecipe():
             recipe = Recipes.query.filter_by(name = name).delete()
             db.session.commit()
             info = str(name) + " has been deleted"
-            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = str(recipe))
+            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)
         
         else:
             info = str(name) + " has not been deleted "
-            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = str(recipe))
+            return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)
     
-    return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info, results = recipe)
+    return render_template("delete.html", title= "Delete Recipe", deleteform = deleteform, info = info)
 
 
 #--------------------------- Account (will add in future update) --------------------------- 
