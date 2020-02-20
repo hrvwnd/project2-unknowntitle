@@ -4,7 +4,6 @@ from application import app, db
 from flask import Flask, request, render_template, url_for, flash, redirect
 from application.forms import GenerateIngredientsForm, RecipeNameForm, SearchForRecipe, UpdateForm, DeleteForm
 from application.models import Recipes, Users
-from application.fuctions import findmethodfromdb
 import requests
 #Routes and other functions for application
 
