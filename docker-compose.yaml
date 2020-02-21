@@ -34,9 +34,7 @@ services:
     - MYSQL_DB=${MYSQL_DB}
     - MYSQL_DB_TEST=${MYSQL_DB_TEST}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    - AWS_XRAY_TRACING_NAME=myapp
-    - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
-    - AWS_XRAY_DEBUG_MODE="true"
+
 
 
   4-final-recipe-generator:
@@ -51,10 +49,6 @@ services:
     depends_on: 
       - 2-ingredient-generator
       - 3-method-generator
-    environment:
-    - AWS_XRAY_TRACING_NAME=myapp
-    - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
-    - AWS_XRAY_DEBUG_MODE="true"
 
     
   2-ingredient-generator:
@@ -66,10 +60,7 @@ services:
     # image: jenkins-swarm:5000/2-ingredient-generator
     deploy:
       replicas: 3
-    environment:
-    - AWS_XRAY_TRACING_NAME=myapp
-    - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
-    - AWS_XRAY_DEBUG_MODE="true"
+
 
   3-method-generator:
     # image: 3-method-generator
@@ -79,7 +70,4 @@ services:
         dockerfile: Dockerfile
     deploy:
       replicas: 3
-    environment:
-    - AWS_XRAY_TRACING_NAME=myapp
-    - AWS_XRAY_DAEMON_ADDRESS=x-ray:2000
-    - AWS_XRAY_DEBUG_MODE="true"
+
