@@ -18,4 +18,5 @@ class Users(db.Model):
         id = db.Column(db.Integer, primary_key=True, unique = True)
         username = db.Column(db.String(30), nullable=False, unique= True)
         email = db.Column(db.String(30), nullable=False, unique= True)
+        password = db.Column(db.String(30), nullable = False, unique = False)
         #recipe_id = db.Column(db.Integer,db.ForeignKey('Recipes.id'))
