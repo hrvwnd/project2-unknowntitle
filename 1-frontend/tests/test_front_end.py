@@ -50,3 +50,11 @@ class UnitTest(UnitBase):
     def test_recipes_url(self):
         response = self.client.get(url_for("recipes"))
         self.assertEqual(response.status_code, 200)
+
+    def test_delete_url(self):
+        response = self.client.get(url_for("deleterecipe"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_url(self):
+        response = self.client.get(url_for("updaterecipe"))
+        self.assertEqual(response.status_code, 200)

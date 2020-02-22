@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class="form">
+        <form method="POST" action="">
+            {{ updateform.hidden_tag() }}
+            <h1><b>{{ info }}</b></h1>
+            <div class="form-group">
+                {{ updateform.oldrecipe_name.label }}
+                {% if updateform.oldrecipe_name.errors %}
+                    {{ updateform.oldrecipe_name }}
+                    <div class="error">
+                        {% for error in updateform.oldrecipe_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ updateform.oldrecipe_name }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ updateform.recipe_name.label }}
+                {% if updateform.recipe_name.errors %}
+                    {{ updateform.recipe_name }}
+                    <div class="error">
+                        {% for error in updateform.recipe_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ updateform.recipe_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ updateform.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock body_content %}

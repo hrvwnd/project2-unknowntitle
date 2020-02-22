@@ -4,6 +4,7 @@
     <div class="form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
+            <h1><b>{{ info }}</b></h1>
             <div class="form-group">
                 {{ form.recipe_name.label }}
                 {% if form.recipe_name.errors %}

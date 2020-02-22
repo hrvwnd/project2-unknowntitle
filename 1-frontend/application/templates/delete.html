@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class="form">
+        <form method="POST" action="">
+            {{ deleteform.hidden_tag() }}
+            <h1><b>{{ info }}</b></h1>
+            <div class="form-group">
+                {{ deleteform.deleterecipe.label }}
+                {% if deleteform.deleterecipe.errors %}
+                    {{ deleteform.deleterecipe }}
+                    <div class="error">
+                        {% for error in deleteform.deleterecipe.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ deleteform.deleterecipe }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ deleteform.confirmdelete.label }}
+                {% if deleteform.confirmdelete.errors %}
+                    {{ deleteform.confirmdelete }}
+                    <div class="error">
+                        {% for error in deleteform.confirmdelete.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ deleteform.confirmdelete }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ deleteform.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock body_content %}
