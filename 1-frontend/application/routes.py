@@ -76,7 +76,7 @@ def recipes():
         print (query)
             
         return render_template("recipes.html", title= "Recipes", form = form, \
-            results = query, updateform = updateform, DeleteForm = DeleteForm)
+            results = query)
 
     return render_template("recipes.html", title = "Recipes", form=form, results = RecipeData) 
 
