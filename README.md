@@ -22,5 +22,6 @@ An entity relationship diagram consisting of 1 Table for Recipes containing diff
 ![TRELLO](https://imgur.com/I6SKF9L.png)
 ## Use Case Scenario
 ![UC](https://i.imgur.com/YRdTlNU.png) 
+![UC2](https://i.imgur.com/ixjAsuZ.jpg)
 ## Risk Assessment 
 ![RA](https://imgur.com/ML0kmHp.png)
