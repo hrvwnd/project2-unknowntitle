@@ -5,3 +5,8 @@
 /application/__pycache__/
 *.docx
 /trello-progress
+.terraform
+*.terraform
+.vscode
+**/.terraform/*
+.intelliJterraform.tfstateterraform.tfstate.*
